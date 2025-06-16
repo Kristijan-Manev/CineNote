@@ -30,5 +30,15 @@ namespace CineNote.Services
             File.WriteAllText(filePath, json);
 
         }
+
+        public static void SaveAllMovies(List<Movie> movies)
+        {
+            var dir=Path.GetDirectoryName(Path.GetFullPath(filePath));
+            
+            Directory.CreateDirectory(dir);
+
+            var json= JsonSerializer.Serialize(movies,new JsonSerializerOptions { WriteIndented = true });  
+            File.WriteAllText(filePath, json);  
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using CineNote.Views;
+﻿using CineNote.Services;
+using CineNote.Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -42,6 +43,47 @@ namespace CineNote
         {
             var addMovieForm = new AddMovieForm();
             addMovieForm.ShowDialog();
+        }
+
+        private void dataGridViewMovies_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            var movies = MovieService.LoadMovies();
+            dataGridViewMovies.DataSource = null;
+            dataGridViewMovies.DataSource = movies;
+
+            dataGridViewMovies.Columns["Title"].HeaderText ="Title";
+            dataGridViewMovies.Columns["Genre"].HeaderText = "Genre";
+            dataGridViewMovies.Columns["Rating"].HeaderText = "Rating ★";
+            dataGridViewMovies.Columns["Comment"].HeaderText = "Your Review";
+            dataGridViewMovies.Columns["DateWatched"].HeaderText = "Date Watched";
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewMovies.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Please select a movie to delete!");
+                return;
+            }
+
+            var selectedRow = dataGridViewMovies.SelectedRows[0];
+            var selectedTitle = selectedRow.Cells["Title"].Value.ToString();
+
+            var movies = MovieService.LoadMovies();
+
+            var movieToRemove = movies.FirstOrDefault(m=>m.Title == selectedTitle);
+            if(movieToRemove != null)
+            {
+                movies.Remove(movieToRemove);
+                MovieService.SaveAllMovies(movies);
+                MessageBox.Show($"Deleted '{selectedTitle}'.");
+                btnRefresh.PerformClick();
+            }
         }
     }
 }
