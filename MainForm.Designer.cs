@@ -104,6 +104,7 @@
             this.btnAddMovie.TabIndex = 3;
             this.btnAddMovie.Text = "Add Movie";
             this.btnAddMovie.UseVisualStyleBackColor = false;
+            this.btnAddMovie.Click += new System.EventHandler(this.btnAddMovie_Click);
             // 
             // btnWatchlist
             // 

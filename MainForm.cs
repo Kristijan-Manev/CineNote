@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CineNote.Views;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -35,6 +36,12 @@ namespace CineNote
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void btnAddMovie_Click(object sender, EventArgs e)
+        {
+            var addMovieForm = new AddMovieForm();
+            addMovieForm.ShowDialog();
         }
     }
 }
