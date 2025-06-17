@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelSidebar = new System.Windows.Forms.Panel();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnStats = new System.Windows.Forms.Button();
@@ -41,6 +41,9 @@
             this.btnRefresh = new System.Windows.Forms.Button();
             this.dataGridViewMovies = new System.Windows.Forms.DataGridView();
             this.comboBoxFilter = new System.Windows.Forms.ComboBox();
+            this.comboGenreFilter = new System.Windows.Forms.ComboBox();
+            this.comboSortBy = new System.Windows.Forms.ComboBox();
+            this.btnApplyFilter = new System.Windows.Forms.Button();
             this.panelSidebar.SuspendLayout();
             this.panelContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMovies)).BeginInit();
@@ -149,6 +152,9 @@
             // 
             // panelContent
             // 
+            this.panelContent.Controls.Add(this.btnApplyFilter);
+            this.panelContent.Controls.Add(this.comboSortBy);
+            this.panelContent.Controls.Add(this.comboGenreFilter);
             this.panelContent.Controls.Add(this.comboBoxFilter);
             this.panelContent.Controls.Add(this.btnDeleteSelected);
             this.panelContent.Controls.Add(this.btnRefresh);
@@ -188,21 +194,21 @@
             // 
             this.dataGridViewMovies.AllowUserToAddRows = false;
             this.dataGridViewMovies.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewMovies.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewMovies.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewMovies.Location = new System.Drawing.Point(0, 34);
             this.dataGridViewMovies.Name = "dataGridViewMovies";
             this.dataGridViewMovies.ReadOnly = true;
             this.dataGridViewMovies.RowHeadersWidth = 51;
             this.dataGridViewMovies.RowTemplate.Height = 24;
             this.dataGridViewMovies.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewMovies.Size = new System.Drawing.Size(736, 250);
+            this.dataGridViewMovies.Size = new System.Drawing.Size(712, 250);
             this.dataGridViewMovies.TabIndex = 0;
             this.dataGridViewMovies.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMovies_CellContentClick);
             // 
@@ -214,11 +220,56 @@
             "All",
             "Watched",
             "Watchlist"});
-            this.comboBoxFilter.Location = new System.Drawing.Point(3, 3);
+            this.comboBoxFilter.Location = new System.Drawing.Point(3, 4);
             this.comboBoxFilter.Name = "comboBoxFilter";
             this.comboBoxFilter.Size = new System.Drawing.Size(121, 25);
             this.comboBoxFilter.TabIndex = 3;
             this.comboBoxFilter.SelectedIndexChanged += new System.EventHandler(this.comboBoxFilter_SelectedIndexChanged);
+            // 
+            // comboGenreFilter
+            // 
+            this.comboGenreFilter.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboGenreFilter.FormattingEnabled = true;
+            this.comboGenreFilter.Items.AddRange(new object[] {
+            "All",
+            "Action",
+            "Animation",
+            "Comedy",
+            "Drama",
+            "Documentary",
+            "Horror",
+            "Thriller"});
+            this.comboGenreFilter.Location = new System.Drawing.Point(130, 4);
+            this.comboGenreFilter.Name = "comboGenreFilter";
+            this.comboGenreFilter.Size = new System.Drawing.Size(121, 25);
+            this.comboGenreFilter.TabIndex = 4;
+            // 
+            // comboSortBy
+            // 
+            this.comboSortBy.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboSortBy.FormattingEnabled = true;
+            this.comboSortBy.Items.AddRange(new object[] {
+            "Title (A-Z)",
+            "Title (Z-A)",
+            "Rating (High to Low)",
+            "Rating (Low to High)",
+            "Date Watched (Newest First)",
+            "Date Watched (Oldest First)"});
+            this.comboSortBy.Location = new System.Drawing.Point(257, 4);
+            this.comboSortBy.Name = "comboSortBy";
+            this.comboSortBy.Size = new System.Drawing.Size(121, 25);
+            this.comboSortBy.TabIndex = 5;
+            // 
+            // btnApplyFilter
+            // 
+            this.btnApplyFilter.ForeColor = System.Drawing.Color.Black;
+            this.btnApplyFilter.Location = new System.Drawing.Point(605, 6);
+            this.btnApplyFilter.Name = "btnApplyFilter";
+            this.btnApplyFilter.Size = new System.Drawing.Size(95, 23);
+            this.btnApplyFilter.TabIndex = 6;
+            this.btnApplyFilter.Text = "Apply Filter";
+            this.btnApplyFilter.UseVisualStyleBackColor = true;
+            this.btnApplyFilter.Click += new System.EventHandler(this.btnApplyFilter_Click);
             // 
             // MainForm
             // 
@@ -251,6 +302,9 @@
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.DataGridView dataGridViewMovies;
         private System.Windows.Forms.ComboBox comboBoxFilter;
+        private System.Windows.Forms.ComboBox comboGenreFilter;
+        private System.Windows.Forms.ComboBox comboSortBy;
+        private System.Windows.Forms.Button btnApplyFilter;
     }
 }
 

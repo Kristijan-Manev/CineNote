@@ -114,5 +114,53 @@ namespace CineNote
             dataGridViewMovies.DataSource = filtered;
 
         }
+
+        private void UpdateGrid(List<Movie> movies)
+        {
+            dataGridViewMovies.DataSource = null;
+            dataGridViewMovies.DataSource = movies;
+
+            if (dataGridViewMovies.Columns.Contains("DateWatched"))
+                dataGridViewMovies.Columns["DateWatched"].HeaderText = "Date Watched";
+        }
+
+        private void btnApplyFilter_Click(object sender, EventArgs e)
+        {
+            var filtered = movies;
+
+            string selectedGenre = comboGenreFilter.SelectedItem?.ToString();   
+            if(!string.IsNullOrWhiteSpace(selectedGenre) && selectedGenre!="All") 
+            { 
+                filtered=filtered.Where(m=>m.Genre==selectedGenre).ToList();
+            }
+
+            string sortOption = comboSortBy.SelectedItem?.ToString();
+            switch(sortOption)
+            {
+                case "Title (A-Z)":
+                    filtered = filtered.OrderBy(m=>m.Title).ToList();
+                    break;
+                case "Title (Z-A)":
+                    filtered = filtered.OrderByDescending(m => m.Title).ToList();
+                    break;
+                case "Rating (High to Low)":
+                    filtered = filtered.OrderByDescending(m => m.Rating).ToList();
+                    break;
+                case "Rating (Low to High)":
+                    filtered = filtered.OrderBy(m => m.Rating).ToList();
+                    break;
+                case "Date Watched (Newest First)":
+                    filtered = filtered.OrderByDescending(m => m.DateWatched).ToList();
+                    break;
+                case "Date Watched (Oldest First)":
+                    filtered = filtered.OrderBy(m => m.DateWatched).ToList();
+                    break;
+                default:
+                    break;
+
+            }
+
+            UpdateGrid(filtered);
+        }
     }
 }
