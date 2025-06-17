@@ -40,6 +40,7 @@
             this.btnDeleteSelected = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.dataGridViewMovies = new System.Windows.Forms.DataGridView();
+            this.comboBoxFilter = new System.Windows.Forms.ComboBox();
             this.panelSidebar.SuspendLayout();
             this.panelContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMovies)).BeginInit();
@@ -148,6 +149,7 @@
             // 
             // panelContent
             // 
+            this.panelContent.Controls.Add(this.comboBoxFilter);
             this.panelContent.Controls.Add(this.btnDeleteSelected);
             this.panelContent.Controls.Add(this.btnRefresh);
             this.panelContent.Controls.Add(this.dataGridViewMovies);
@@ -155,14 +157,14 @@
             this.panelContent.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.panelContent.Location = new System.Drawing.Point(200, 0);
             this.panelContent.Name = "panelContent";
-            this.panelContent.Size = new System.Drawing.Size(600, 450);
+            this.panelContent.Size = new System.Drawing.Size(712, 450);
             this.panelContent.TabIndex = 1;
             // 
             // btnDeleteSelected
             // 
             this.btnDeleteSelected.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteSelected.ForeColor = System.Drawing.Color.Black;
-            this.btnDeleteSelected.Location = new System.Drawing.Point(131, 256);
+            this.btnDeleteSelected.Location = new System.Drawing.Point(131, 290);
             this.btnDeleteSelected.Name = "btnDeleteSelected";
             this.btnDeleteSelected.Size = new System.Drawing.Size(108, 23);
             this.btnDeleteSelected.TabIndex = 2;
@@ -174,7 +176,7 @@
             // 
             this.btnRefresh.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRefresh.ForeColor = System.Drawing.Color.Black;
-            this.btnRefresh.Location = new System.Drawing.Point(6, 256);
+            this.btnRefresh.Location = new System.Drawing.Point(6, 290);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(119, 23);
             this.btnRefresh.TabIndex = 1;
@@ -194,22 +196,35 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewMovies.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewMovies.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dataGridViewMovies.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewMovies.Location = new System.Drawing.Point(0, 34);
             this.dataGridViewMovies.Name = "dataGridViewMovies";
             this.dataGridViewMovies.ReadOnly = true;
             this.dataGridViewMovies.RowHeadersWidth = 51;
             this.dataGridViewMovies.RowTemplate.Height = 24;
             this.dataGridViewMovies.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewMovies.Size = new System.Drawing.Size(600, 250);
+            this.dataGridViewMovies.Size = new System.Drawing.Size(736, 250);
             this.dataGridViewMovies.TabIndex = 0;
             this.dataGridViewMovies.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMovies_CellContentClick);
+            // 
+            // comboBoxFilter
+            // 
+            this.comboBoxFilter.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxFilter.FormattingEnabled = true;
+            this.comboBoxFilter.Items.AddRange(new object[] {
+            "All",
+            "Watched",
+            "Watchlist"});
+            this.comboBoxFilter.Location = new System.Drawing.Point(3, 3);
+            this.comboBoxFilter.Name = "comboBoxFilter";
+            this.comboBoxFilter.Size = new System.Drawing.Size(121, 25);
+            this.comboBoxFilter.TabIndex = 3;
+            this.comboBoxFilter.SelectedIndexChanged += new System.EventHandler(this.comboBoxFilter_SelectedIndexChanged);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(912, 450);
             this.Controls.Add(this.panelContent);
             this.Controls.Add(this.panelSidebar);
             this.Name = "MainForm";
@@ -235,6 +250,7 @@
         private System.Windows.Forms.Button btnDeleteSelected;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.DataGridView dataGridViewMovies;
+        private System.Windows.Forms.ComboBox comboBoxFilter;
     }
 }
 

@@ -1,4 +1,5 @@
-﻿using CineNote.Services;
+﻿using CineNote.Models;
+using CineNote.Services;
 using CineNote.Views;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace CineNote
 {
     public partial class MainForm : Form
     {
+        private List<Movie> movies = new List<Movie>();
         public MainForm()
         {
             InitializeComponent();
@@ -52,7 +54,7 @@ namespace CineNote
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            var movies = MovieService.LoadMovies();
+            movies = MovieService.LoadMovies();
             dataGridViewMovies.DataSource = null;
             dataGridViewMovies.DataSource = movies;
 
@@ -84,6 +86,33 @@ namespace CineNote
                 MessageBox.Show($"Deleted '{selectedTitle}'.");
                 btnRefresh.PerformClick();
             }
+        }
+
+        private void comboBoxFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ApplyFilter();
+        }
+
+        private void ApplyFilter()
+        {
+            string filter = comboBoxFilter.SelectedItem.ToString();
+
+            List<Movie> filtered;
+
+            if (filter == "Watched")
+            {
+                filtered = movies.Where(m => m.Watched).ToList();
+            }
+            else if (filter == "Watchlist")
+            {
+                filtered = movies.Where(m => !m.Watched).ToList();
+            }
+            else
+                filtered = movies;
+
+            dataGridViewMovies.DataSource = null;
+            dataGridViewMovies.DataSource = filtered;
+
         }
     }
 }

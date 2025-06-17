@@ -42,7 +42,8 @@ namespace CineNote.Views
                 Genre = txtGenre.Text,
                 DateWatched = dtpWatched.Value,
                 Rating = (int)nudRating.Value,
-                Comment = txtComment.Text
+                Comment = txtComment.Text,
+                Watched = checkBoxWatched.Checked
             };
 
             MovieService.SaveMovie(movie);

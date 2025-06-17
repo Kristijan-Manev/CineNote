@@ -41,6 +41,7 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
+            this.checkBoxWatched = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.nudRating)).BeginInit();
             this.SuspendLayout();
             // 
@@ -126,16 +127,16 @@
             this.label5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(9, 212);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(74, 20);
+            this.label5.Size = new System.Drawing.Size(56, 20);
             this.label5.TabIndex = 9;
-            this.label5.Text = "Comment";
+            this.label5.Text = "Review";
             // 
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(13, 264);
+            this.btnSave.Location = new System.Drawing.Point(12, 292);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(99, 27);
+            this.btnSave.Size = new System.Drawing.Size(100, 27);
             this.btnSave.TabIndex = 10;
             this.btnSave.Text = "Save Movie";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -144,9 +145,9 @@
             // btnCancel
             // 
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(119, 263);
+            this.btnCancel.Location = new System.Drawing.Point(117, 291);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(94, 28);
+            this.btnCancel.Size = new System.Drawing.Size(96, 28);
             this.btnCancel.TabIndex = 11;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -163,11 +164,22 @@
             this.label6.Text = "Add a Movie";
             this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
+            // checkBoxWatched
+            // 
+            this.checkBoxWatched.AutoSize = true;
+            this.checkBoxWatched.Location = new System.Drawing.Point(13, 266);
+            this.checkBoxWatched.Name = "checkBoxWatched";
+            this.checkBoxWatched.Size = new System.Drawing.Size(83, 20);
+            this.checkBoxWatched.TabIndex = 13;
+            this.checkBoxWatched.Text = "Watched";
+            this.checkBoxWatched.UseVisualStyleBackColor = true;
+            // 
             // AddMovieForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.checkBoxWatched);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
@@ -205,5 +217,6 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.CheckBox checkBoxWatched;
     }
 }
