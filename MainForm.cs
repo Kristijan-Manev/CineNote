@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,6 +20,8 @@ namespace CineNote
         public MainForm()
         {
             InitializeComponent();
+            SendMessage(comboGenreFilter.Handle, CB_SETCUEBANNER, IntPtr.Zero, "GENRE");
+            SendMessage(comboSortBy.Handle, CB_SETCUEBANNER, IntPtr.Zero, "SORT BY");
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -35,6 +38,11 @@ namespace CineNote
         {
 
         }
+
+        [System.Runtime.InteropServices.DllImport("user32.dll", CharSet = System.Runtime.InteropServices.CharSet.Unicode)]
+        private static extern IntPtr SendMessage(IntPtr hWnd, int msg, IntPtr wParam, string lParam);
+
+        private const int CB_SETCUEBANNER = 0x1703;
 
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -88,11 +96,6 @@ namespace CineNote
             }
         }
 
-        private void comboBoxFilter_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ApplyFilter();
-        }
-
         private void ApplyFilter()
         {
             string filter = comboBoxFilter.SelectedItem.ToString();
@@ -127,6 +130,12 @@ namespace CineNote
         private void btnApplyFilter_Click(object sender, EventArgs e)
         {
             var filtered = movies;
+
+            string status = comboBoxFilter.SelectedItem?.ToString()??"All";
+            if (status == "Watched")
+                filtered = filtered.Where(m => m.Watched).ToList();
+            else if(status=="Watchlist")
+                filtered=filtered.Where(m=>!m.Watched).ToList();
 
             string selectedGenre = comboGenreFilter.SelectedItem?.ToString();   
             if(!string.IsNullOrWhiteSpace(selectedGenre) && selectedGenre!="All") 

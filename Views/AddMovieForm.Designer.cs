@@ -117,9 +117,24 @@
             // nudRating
             // 
             this.nudRating.Location = new System.Drawing.Point(13, 183);
+            this.nudRating.Maximum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.nudRating.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nudRating.Name = "nudRating";
             this.nudRating.Size = new System.Drawing.Size(200, 22);
             this.nudRating.TabIndex = 8;
+            this.nudRating.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label5
             // 

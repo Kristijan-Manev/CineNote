@@ -28,11 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelSidebar = new System.Windows.Forms.Panel();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnStats = new System.Windows.Forms.Button();
-            this.btnWatchlist = new System.Windows.Forms.Button();
             this.btnAddMovie = new System.Windows.Forms.Button();
             this.btnHome = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -54,7 +53,6 @@
             this.panelSidebar.BackColor = System.Drawing.SystemColors.ControlDark;
             this.panelSidebar.Controls.Add(this.btnExit);
             this.panelSidebar.Controls.Add(this.btnStats);
-            this.panelSidebar.Controls.Add(this.btnWatchlist);
             this.panelSidebar.Controls.Add(this.btnAddMovie);
             this.panelSidebar.Controls.Add(this.btnHome);
             this.panelSidebar.Controls.Add(this.label1);
@@ -72,7 +70,7 @@
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.ForeColor = System.Drawing.Color.White;
-            this.btnExit.Location = new System.Drawing.Point(0, 135);
+            this.btnExit.Location = new System.Drawing.Point(0, 101);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(200, 34);
             this.btnExit.TabIndex = 6;
@@ -87,26 +85,12 @@
             this.btnStats.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStats.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStats.ForeColor = System.Drawing.Color.White;
-            this.btnStats.Location = new System.Drawing.Point(0, 102);
+            this.btnStats.Location = new System.Drawing.Point(0, 68);
             this.btnStats.Name = "btnStats";
             this.btnStats.Size = new System.Drawing.Size(200, 33);
             this.btnStats.TabIndex = 5;
             this.btnStats.Text = "Stats";
             this.btnStats.UseVisualStyleBackColor = false;
-            // 
-            // btnWatchlist
-            // 
-            this.btnWatchlist.BackColor = System.Drawing.Color.Transparent;
-            this.btnWatchlist.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnWatchlist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnWatchlist.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnWatchlist.ForeColor = System.Drawing.Color.White;
-            this.btnWatchlist.Location = new System.Drawing.Point(0, 68);
-            this.btnWatchlist.Name = "btnWatchlist";
-            this.btnWatchlist.Size = new System.Drawing.Size(200, 34);
-            this.btnWatchlist.TabIndex = 4;
-            this.btnWatchlist.Text = "Watchlist";
-            this.btnWatchlist.UseVisualStyleBackColor = false;
             // 
             // btnAddMovie
             // 
@@ -194,14 +178,14 @@
             // 
             this.dataGridViewMovies.AllowUserToAddRows = false;
             this.dataGridViewMovies.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewMovies.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewMovies.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewMovies.Location = new System.Drawing.Point(0, 34);
             this.dataGridViewMovies.Name = "dataGridViewMovies";
             this.dataGridViewMovies.ReadOnly = true;
@@ -224,7 +208,6 @@
             this.comboBoxFilter.Name = "comboBoxFilter";
             this.comboBoxFilter.Size = new System.Drawing.Size(121, 25);
             this.comboBoxFilter.TabIndex = 3;
-            this.comboBoxFilter.SelectedIndexChanged += new System.EventHandler(this.comboBoxFilter_SelectedIndexChanged);
             // 
             // comboGenreFilter
             // 
@@ -257,7 +240,7 @@
             "Date Watched (Oldest First)"});
             this.comboSortBy.Location = new System.Drawing.Point(257, 4);
             this.comboSortBy.Name = "comboSortBy";
-            this.comboSortBy.Size = new System.Drawing.Size(121, 25);
+            this.comboSortBy.Size = new System.Drawing.Size(142, 25);
             this.comboSortBy.TabIndex = 5;
             // 
             // btnApplyFilter
@@ -295,7 +278,6 @@
         private System.Windows.Forms.Button btnHome;
         private System.Windows.Forms.Panel panelContent;
         private System.Windows.Forms.Button btnAddMovie;
-        private System.Windows.Forms.Button btnWatchlist;
         private System.Windows.Forms.Button btnStats;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnDeleteSelected;
