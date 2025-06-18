@@ -28,22 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelSidebar = new System.Windows.Forms.Panel();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnStats = new System.Windows.Forms.Button();
+            this.btnWatchlist = new System.Windows.Forms.Button();
             this.btnHome = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panelContent = new System.Windows.Forms.Panel();
+            this.btnAddMovie = new System.Windows.Forms.Button();
+            this.btnApplyFilter = new System.Windows.Forms.Button();
+            this.comboSortBy = new System.Windows.Forms.ComboBox();
+            this.comboGenreFilter = new System.Windows.Forms.ComboBox();
+            this.comboBoxFilter = new System.Windows.Forms.ComboBox();
             this.btnDeleteSelected = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.dataGridViewMovies = new System.Windows.Forms.DataGridView();
-            this.comboBoxFilter = new System.Windows.Forms.ComboBox();
-            this.comboGenreFilter = new System.Windows.Forms.ComboBox();
-            this.comboSortBy = new System.Windows.Forms.ComboBox();
-            this.btnApplyFilter = new System.Windows.Forms.Button();
-            this.btnWatchlist = new System.Windows.Forms.Button();
-            this.btnAddMovie = new System.Windows.Forms.Button();
             this.panelSidebar.SuspendLayout();
             this.panelContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMovies)).BeginInit();
@@ -93,6 +93,20 @@
             this.btnStats.Text = "Stats";
             this.btnStats.UseVisualStyleBackColor = false;
             // 
+            // btnWatchlist
+            // 
+            this.btnWatchlist.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnWatchlist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnWatchlist.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnWatchlist.ForeColor = System.Drawing.Color.White;
+            this.btnWatchlist.Location = new System.Drawing.Point(0, 34);
+            this.btnWatchlist.Name = "btnWatchlist";
+            this.btnWatchlist.Size = new System.Drawing.Size(200, 34);
+            this.btnWatchlist.TabIndex = 7;
+            this.btnWatchlist.Text = "Watchlist";
+            this.btnWatchlist.UseVisualStyleBackColor = true;
+            this.btnWatchlist.Click += new System.EventHandler(this.btnWatchlist_Click);
+            // 
             // btnHome
             // 
             this.btnHome.BackColor = System.Drawing.Color.Transparent;
@@ -137,6 +151,76 @@
             this.panelContent.Size = new System.Drawing.Size(712, 450);
             this.panelContent.TabIndex = 1;
             // 
+            // btnAddMovie
+            // 
+            this.btnAddMovie.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddMovie.ForeColor = System.Drawing.Color.Black;
+            this.btnAddMovie.Location = new System.Drawing.Point(6, 320);
+            this.btnAddMovie.Name = "btnAddMovie";
+            this.btnAddMovie.Size = new System.Drawing.Size(118, 23);
+            this.btnAddMovie.TabIndex = 7;
+            this.btnAddMovie.Text = "Add Movie";
+            this.btnAddMovie.UseVisualStyleBackColor = true;
+            this.btnAddMovie.Click += new System.EventHandler(this.btnAddMovie_Click);
+            // 
+            // btnApplyFilter
+            // 
+            this.btnApplyFilter.ForeColor = System.Drawing.Color.Black;
+            this.btnApplyFilter.Location = new System.Drawing.Point(605, 6);
+            this.btnApplyFilter.Name = "btnApplyFilter";
+            this.btnApplyFilter.Size = new System.Drawing.Size(95, 23);
+            this.btnApplyFilter.TabIndex = 6;
+            this.btnApplyFilter.Text = "Apply Filter";
+            this.btnApplyFilter.UseVisualStyleBackColor = true;
+            this.btnApplyFilter.Click += new System.EventHandler(this.btnApplyFilter_Click);
+            // 
+            // comboSortBy
+            // 
+            this.comboSortBy.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboSortBy.FormattingEnabled = true;
+            this.comboSortBy.Items.AddRange(new object[] {
+            "Title (A-Z)",
+            "Title (Z-A)",
+            "Rating (High to Low)",
+            "Rating (Low to High)",
+            "Date Watched (Newest First)",
+            "Date Watched (Oldest First)"});
+            this.comboSortBy.Location = new System.Drawing.Point(257, 4);
+            this.comboSortBy.Name = "comboSortBy";
+            this.comboSortBy.Size = new System.Drawing.Size(142, 25);
+            this.comboSortBy.TabIndex = 5;
+            // 
+            // comboGenreFilter
+            // 
+            this.comboGenreFilter.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboGenreFilter.FormattingEnabled = true;
+            this.comboGenreFilter.Items.AddRange(new object[] {
+            "All",
+            "Action",
+            "Animation",
+            "Comedy",
+            "Drama",
+            "Documentary",
+            "Horror",
+            "Thriller"});
+            this.comboGenreFilter.Location = new System.Drawing.Point(130, 4);
+            this.comboGenreFilter.Name = "comboGenreFilter";
+            this.comboGenreFilter.Size = new System.Drawing.Size(121, 25);
+            this.comboGenreFilter.TabIndex = 4;
+            // 
+            // comboBoxFilter
+            // 
+            this.comboBoxFilter.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxFilter.FormattingEnabled = true;
+            this.comboBoxFilter.Items.AddRange(new object[] {
+            "All",
+            "Watched",
+            "Watchlist"});
+            this.comboBoxFilter.Location = new System.Drawing.Point(3, 4);
+            this.comboBoxFilter.Name = "comboBoxFilter";
+            this.comboBoxFilter.Size = new System.Drawing.Size(121, 25);
+            this.comboBoxFilter.TabIndex = 3;
+            // 
             // btnDeleteSelected
             // 
             this.btnDeleteSelected.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -165,14 +249,14 @@
             // 
             this.dataGridViewMovies.AllowUserToAddRows = false;
             this.dataGridViewMovies.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewMovies.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewMovies.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewMovies.Location = new System.Drawing.Point(0, 34);
             this.dataGridViewMovies.Name = "dataGridViewMovies";
             this.dataGridViewMovies.ReadOnly = true;
@@ -182,89 +266,6 @@
             this.dataGridViewMovies.Size = new System.Drawing.Size(712, 250);
             this.dataGridViewMovies.TabIndex = 0;
             this.dataGridViewMovies.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMovies_CellContentClick);
-            // 
-            // comboBoxFilter
-            // 
-            this.comboBoxFilter.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxFilter.FormattingEnabled = true;
-            this.comboBoxFilter.Items.AddRange(new object[] {
-            "All",
-            "Watched",
-            "Watchlist"});
-            this.comboBoxFilter.Location = new System.Drawing.Point(3, 4);
-            this.comboBoxFilter.Name = "comboBoxFilter";
-            this.comboBoxFilter.Size = new System.Drawing.Size(121, 25);
-            this.comboBoxFilter.TabIndex = 3;
-            // 
-            // comboGenreFilter
-            // 
-            this.comboGenreFilter.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboGenreFilter.FormattingEnabled = true;
-            this.comboGenreFilter.Items.AddRange(new object[] {
-            "All",
-            "Action",
-            "Animation",
-            "Comedy",
-            "Drama",
-            "Documentary",
-            "Horror",
-            "Thriller"});
-            this.comboGenreFilter.Location = new System.Drawing.Point(130, 4);
-            this.comboGenreFilter.Name = "comboGenreFilter";
-            this.comboGenreFilter.Size = new System.Drawing.Size(121, 25);
-            this.comboGenreFilter.TabIndex = 4;
-            // 
-            // comboSortBy
-            // 
-            this.comboSortBy.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboSortBy.FormattingEnabled = true;
-            this.comboSortBy.Items.AddRange(new object[] {
-            "Title (A-Z)",
-            "Title (Z-A)",
-            "Rating (High to Low)",
-            "Rating (Low to High)",
-            "Date Watched (Newest First)",
-            "Date Watched (Oldest First)"});
-            this.comboSortBy.Location = new System.Drawing.Point(257, 4);
-            this.comboSortBy.Name = "comboSortBy";
-            this.comboSortBy.Size = new System.Drawing.Size(142, 25);
-            this.comboSortBy.TabIndex = 5;
-            // 
-            // btnApplyFilter
-            // 
-            this.btnApplyFilter.ForeColor = System.Drawing.Color.Black;
-            this.btnApplyFilter.Location = new System.Drawing.Point(605, 6);
-            this.btnApplyFilter.Name = "btnApplyFilter";
-            this.btnApplyFilter.Size = new System.Drawing.Size(95, 23);
-            this.btnApplyFilter.TabIndex = 6;
-            this.btnApplyFilter.Text = "Apply Filter";
-            this.btnApplyFilter.UseVisualStyleBackColor = true;
-            this.btnApplyFilter.Click += new System.EventHandler(this.btnApplyFilter_Click);
-            // 
-            // btnWatchlist
-            // 
-            this.btnWatchlist.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnWatchlist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnWatchlist.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnWatchlist.ForeColor = System.Drawing.Color.White;
-            this.btnWatchlist.Location = new System.Drawing.Point(0, 34);
-            this.btnWatchlist.Name = "btnWatchlist";
-            this.btnWatchlist.Size = new System.Drawing.Size(200, 34);
-            this.btnWatchlist.TabIndex = 7;
-            this.btnWatchlist.Text = "Watchlist";
-            this.btnWatchlist.UseVisualStyleBackColor = true;
-            // 
-            // btnAddMovie
-            // 
-            this.btnAddMovie.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddMovie.ForeColor = System.Drawing.Color.Black;
-            this.btnAddMovie.Location = new System.Drawing.Point(6, 320);
-            this.btnAddMovie.Name = "btnAddMovie";
-            this.btnAddMovie.Size = new System.Drawing.Size(118, 23);
-            this.btnAddMovie.TabIndex = 7;
-            this.btnAddMovie.Text = "Add Movie";
-            this.btnAddMovie.UseVisualStyleBackColor = true;
-            this.btnAddMovie.Click += new System.EventHandler(this.btnAddMovie_Click);
             // 
             // MainForm
             // 

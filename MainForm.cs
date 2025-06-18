@@ -22,6 +22,8 @@ namespace CineNote
             InitializeComponent();
             SendMessage(comboGenreFilter.Handle, CB_SETCUEBANNER, IntPtr.Zero, "GENRE");
             SendMessage(comboSortBy.Handle, CB_SETCUEBANNER, IntPtr.Zero, "SORT BY");
+            LoadAllMovies();
+            UpdateGrid(movies.Where(m=>m.Watched).ToList());
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -118,10 +120,10 @@ namespace CineNote
 
         }
 
-        private void UpdateGrid(List<Movie> movies)
+        private void UpdateGrid(List<Movie> list)
         {
             dataGridViewMovies.DataSource = null;
-            dataGridViewMovies.DataSource = movies;
+            dataGridViewMovies.DataSource = list;
 
             if (dataGridViewMovies.Columns.Contains("Watched"))
                 dataGridViewMovies.Columns.Remove("Watched");
@@ -183,9 +185,21 @@ namespace CineNote
 
         private void btnHome_Click(object sender, EventArgs e)
         {
-            movies = MovieService.LoadMovies();
+            LoadAllMovies();
             var watchedOnly = movies.Where(m => m.Watched).ToList();
             UpdateGrid(watchedOnly);
+        }
+
+        private void LoadAllMovies()
+        {
+            movies = MovieService.LoadMovies();
+        }
+
+        private void btnWatchlist_Click(object sender, EventArgs e)
+        {
+            LoadAllMovies();
+            var wantToWatch = movies.Where(m=>!m.Watched).ToList(); 
+            UpdateGrid(wantToWatch);
         }
     }
 }
