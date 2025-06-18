@@ -198,9 +198,11 @@ namespace CineNote
 
         private void btnWatchlist_Click(object sender, EventArgs e)
         {
+            var wf = new WatchlistForm();
+            wf.ShowDialog();
             LoadAllMovies();
-            var wantToWatch = movies.Where(m=>!m.Watched).ToList(); 
-            UpdateGrid(wantToWatch);
+            var watchedOnly = movies.Where(m=>m.Watched).ToList();  
+            UpdateGrid(watchedOnly);
         }
     }
 }

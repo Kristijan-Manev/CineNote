@@ -16,5 +16,7 @@ namespace CineNote.Models
 
         public bool Watched { get; set; }
 
+        public int Priority { get; set; } = 3;
+
     }
 }

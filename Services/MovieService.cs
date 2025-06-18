@@ -15,7 +15,7 @@ namespace CineNote.Services
 
         public static List<Movie> LoadMovies()
         {
-            if(!File.Exists(filePath))
+            if (!File.Exists(filePath))
                 return new List<Movie>();
 
             string json = File.ReadAllText(filePath);
@@ -26,19 +26,37 @@ namespace CineNote.Services
         {
             var movies = LoadMovies();
             movies.Add(movie);
-            string json = JsonSerializer.Serialize(movies, new JsonSerializerOptions { WriteIndented = true});
+            string json = JsonSerializer.Serialize(movies, new JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(filePath, json);
 
         }
 
         public static void SaveAllMovies(List<Movie> movies)
         {
-            var dir=Path.GetDirectoryName(Path.GetFullPath(filePath));
-            
+            var dir = Path.GetDirectoryName(Path.GetFullPath(filePath));
+
             Directory.CreateDirectory(dir);
 
-            var json= JsonSerializer.Serialize(movies,new JsonSerializerOptions { WriteIndented = true });  
-            File.WriteAllText(filePath, json);  
+            var json = JsonSerializer.Serialize(movies, new JsonSerializerOptions { WriteIndented = true });
+            File.WriteAllText(filePath, json);
+        }
+
+        public static void UpdateMovie(Movie updatedMovie)
+        {
+            var all = LoadMovies();
+            var target = all.FirstOrDefault(m=>m.Title == updatedMovie.Title);
+
+            if (target != null)
+            {
+                target.Watched=updatedMovie.Watched;
+                target.DateWatched=updatedMovie.DateWatched;
+                target.Priority = updatedMovie.Priority;
+                target.Rating= updatedMovie.Rating;
+                target.Comment = updatedMovie.Comment;
+
+            }
+
+            SaveAllMovies(all);
         }
     }
 }

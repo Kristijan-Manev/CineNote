@@ -42,7 +42,10 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.checkBoxWatched = new System.Windows.Forms.CheckBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.numericPriority = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.nudRating)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericPriority)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -149,7 +152,7 @@
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(12, 292);
+            this.btnSave.Location = new System.Drawing.Point(12, 321);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(100, 27);
             this.btnSave.TabIndex = 10;
@@ -160,7 +163,7 @@
             // btnCancel
             // 
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(117, 291);
+            this.btnCancel.Location = new System.Drawing.Point(117, 320);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(96, 28);
             this.btnCancel.TabIndex = 11;
@@ -182,7 +185,7 @@
             // checkBoxWatched
             // 
             this.checkBoxWatched.AutoSize = true;
-            this.checkBoxWatched.Location = new System.Drawing.Point(13, 266);
+            this.checkBoxWatched.Location = new System.Drawing.Point(130, 286);
             this.checkBoxWatched.Name = "checkBoxWatched";
             this.checkBoxWatched.Size = new System.Drawing.Size(83, 20);
             this.checkBoxWatched.TabIndex = 13;
@@ -190,11 +193,45 @@
             this.checkBoxWatched.UseVisualStyleBackColor = true;
             this.checkBoxWatched.CheckedChanged += new System.EventHandler(this.checkBoxWatched_CheckedChanged);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(10, 260);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(56, 20);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Priority";
+            // 
+            // numericPriority
+            // 
+            this.numericPriority.Location = new System.Drawing.Point(13, 284);
+            this.numericPriority.Maximum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.numericPriority.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericPriority.Name = "numericPriority";
+            this.numericPriority.Size = new System.Drawing.Size(100, 22);
+            this.numericPriority.TabIndex = 15;
+            this.numericPriority.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            // 
             // AddMovieForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.numericPriority);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.checkBoxWatched);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnCancel);
@@ -213,6 +250,7 @@
             this.Text = "AddMovieForm";
             this.Load += new System.EventHandler(this.AddMovieForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudRating)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericPriority)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -234,5 +272,7 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.CheckBox checkBoxWatched;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.NumericUpDown numericPriority;
     }
 }
