@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelSidebar = new System.Windows.Forms.Panel();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnStats = new System.Windows.Forms.Button();
@@ -42,7 +42,6 @@
             this.comboGenreFilter = new System.Windows.Forms.ComboBox();
             this.comboBoxFilter = new System.Windows.Forms.ComboBox();
             this.btnDeleteSelected = new System.Windows.Forms.Button();
-            this.btnRefresh = new System.Windows.Forms.Button();
             this.dataGridViewMovies = new System.Windows.Forms.DataGridView();
             this.panelSidebar.SuspendLayout();
             this.panelContent.SuspendLayout();
@@ -142,7 +141,6 @@
             this.panelContent.Controls.Add(this.comboGenreFilter);
             this.panelContent.Controls.Add(this.comboBoxFilter);
             this.panelContent.Controls.Add(this.btnDeleteSelected);
-            this.panelContent.Controls.Add(this.btnRefresh);
             this.panelContent.Controls.Add(this.dataGridViewMovies);
             this.panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContent.ForeColor = System.Drawing.Color.WhiteSmoke;
@@ -155,7 +153,7 @@
             // 
             this.btnAddMovie.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddMovie.ForeColor = System.Drawing.Color.Black;
-            this.btnAddMovie.Location = new System.Drawing.Point(6, 320);
+            this.btnAddMovie.Location = new System.Drawing.Point(3, 290);
             this.btnAddMovie.Name = "btnAddMovie";
             this.btnAddMovie.Size = new System.Drawing.Size(118, 23);
             this.btnAddMovie.TabIndex = 7;
@@ -225,7 +223,7 @@
             // 
             this.btnDeleteSelected.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteSelected.ForeColor = System.Drawing.Color.Black;
-            this.btnDeleteSelected.Location = new System.Drawing.Point(131, 290);
+            this.btnDeleteSelected.Location = new System.Drawing.Point(127, 290);
             this.btnDeleteSelected.Name = "btnDeleteSelected";
             this.btnDeleteSelected.Size = new System.Drawing.Size(108, 23);
             this.btnDeleteSelected.TabIndex = 2;
@@ -233,30 +231,18 @@
             this.btnDeleteSelected.UseVisualStyleBackColor = true;
             this.btnDeleteSelected.Click += new System.EventHandler(this.button2_Click);
             // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRefresh.ForeColor = System.Drawing.Color.Black;
-            this.btnRefresh.Location = new System.Drawing.Point(6, 290);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(119, 23);
-            this.btnRefresh.TabIndex = 1;
-            this.btnRefresh.Text = "Refresh List";
-            this.btnRefresh.UseVisualStyleBackColor = true;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
-            // 
             // dataGridViewMovies
             // 
             this.dataGridViewMovies.AllowUserToAddRows = false;
             this.dataGridViewMovies.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewMovies.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewMovies.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewMovies.Location = new System.Drawing.Point(0, 34);
             this.dataGridViewMovies.Name = "dataGridViewMovies";
             this.dataGridViewMovies.ReadOnly = true;
@@ -293,7 +279,6 @@
         private System.Windows.Forms.Button btnStats;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnDeleteSelected;
-        private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.DataGridView dataGridViewMovies;
         private System.Windows.Forms.ComboBox comboBoxFilter;
         private System.Windows.Forms.ComboBox comboGenreFilter;

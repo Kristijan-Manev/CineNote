@@ -14,6 +14,7 @@ namespace CineNote.Views
 {
     public partial class AddMovieForm : Form
     {
+        public bool MovieAdded { get; private set; } = false;
         public AddMovieForm()
         {
             InitializeComponent();
@@ -50,6 +51,7 @@ namespace CineNote.Views
             };
 
             MovieService.SaveMovie(movie);
+            MovieAdded = true;
 
             MessageBox.Show("Movie saved!");
             this.Close();

@@ -55,24 +55,18 @@ namespace CineNote
         {
             var addMovieForm = new AddMovieForm();
             addMovieForm.ShowDialog();
+
+            if (addMovieForm.MovieAdded)
+            {
+                LoadAllMovies();
+                var watchedOnly = movies.Where(m=>m.Watched).ToList();
+                UpdateGrid(watchedOnly);
+            }
         }
 
         private void dataGridViewMovies_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
-        }
-
-        private void btnRefresh_Click(object sender, EventArgs e)
-        {
-            movies = MovieService.LoadMovies();
-            dataGridViewMovies.DataSource = null;
-            dataGridViewMovies.DataSource = movies;
-
-            dataGridViewMovies.Columns["Title"].HeaderText ="Title";
-            dataGridViewMovies.Columns["Genre"].HeaderText = "Genre";
-            dataGridViewMovies.Columns["Rating"].HeaderText = "Rating ★";
-            dataGridViewMovies.Columns["Comment"].HeaderText = "Your Review";
-            dataGridViewMovies.Columns["DateWatched"].HeaderText = "Date Watched";
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -94,7 +88,6 @@ namespace CineNote
                 movies.Remove(movieToRemove);
                 MovieService.SaveAllMovies(movies);
                 MessageBox.Show($"Deleted '{selectedTitle}'.");
-                btnRefresh.PerformClick();
             }
         }
 
@@ -120,22 +113,30 @@ namespace CineNote
 
         }
 
+        private void SetHeaders()
+        {
+            if (dataGridViewMovies.Columns.Contains("Watched"))
+                dataGridViewMovies.Columns.Remove("Watched");
+
+            if (dataGridViewMovies.Columns.Contains("Title"))
+                dataGridViewMovies.Columns["Title"].HeaderText = "Title";
+            if (dataGridViewMovies.Columns.Contains("Genre"))
+                dataGridViewMovies.Columns["Genre"].HeaderText = "Genre";
+            if (dataGridViewMovies.Columns.Contains("Rating"))
+                dataGridViewMovies.Columns["Rating"].HeaderText = "Rating ★";
+            if (dataGridViewMovies.Columns.Contains("Comment"))
+                dataGridViewMovies.Columns["Comment"].HeaderText = "Your Review";
+            if (dataGridViewMovies.Columns.Contains("DateWatched"))
+                dataGridViewMovies.Columns["DateWatched"].HeaderText = "Date Watched";
+
+        }
+
         private void UpdateGrid(List<Movie> list)
         {
             dataGridViewMovies.DataSource = null;
             dataGridViewMovies.DataSource = list;
 
-            if (dataGridViewMovies.Columns.Contains("Watched"))
-                dataGridViewMovies.Columns.Remove("Watched");
-
-            if (dataGridViewMovies.Columns.Contains("DateWatched"))
-                dataGridViewMovies.Columns["DateWatched"].HeaderText = "Date Watched";
-
-            if (dataGridViewMovies.Columns.Contains("Rating"))
-                dataGridViewMovies.Columns["Rating"].HeaderText = "Rating ★";
-
-            if (dataGridViewMovies.Columns.Contains("Comment"))
-                dataGridViewMovies.Columns["Comment"].HeaderText = "Your Review";
+            SetHeaders();
         }
 
         private void btnApplyFilter_Click(object sender, EventArgs e)
