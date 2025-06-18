@@ -123,8 +123,17 @@ namespace CineNote
             dataGridViewMovies.DataSource = null;
             dataGridViewMovies.DataSource = movies;
 
+            if (dataGridViewMovies.Columns.Contains("Watched"))
+                dataGridViewMovies.Columns.Remove("Watched");
+
             if (dataGridViewMovies.Columns.Contains("DateWatched"))
                 dataGridViewMovies.Columns["DateWatched"].HeaderText = "Date Watched";
+
+            if (dataGridViewMovies.Columns.Contains("Rating"))
+                dataGridViewMovies.Columns["Rating"].HeaderText = "Rating ★";
+
+            if (dataGridViewMovies.Columns.Contains("Comment"))
+                dataGridViewMovies.Columns["Comment"].HeaderText = "Your Review";
         }
 
         private void btnApplyFilter_Click(object sender, EventArgs e)
@@ -170,6 +179,13 @@ namespace CineNote
             }
 
             UpdateGrid(filtered);
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            movies = MovieService.LoadMovies();
+            var watchedOnly = movies.Where(m => m.Watched).ToList();
+            UpdateGrid(watchedOnly);
         }
     }
 }
