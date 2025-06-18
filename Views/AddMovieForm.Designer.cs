@@ -188,6 +188,7 @@
             this.checkBoxWatched.TabIndex = 13;
             this.checkBoxWatched.Text = "Watched";
             this.checkBoxWatched.UseVisualStyleBackColor = true;
+            this.checkBoxWatched.CheckedChanged += new System.EventHandler(this.checkBoxWatched_CheckedChanged);
             // 
             // AddMovieForm
             // 

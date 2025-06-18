@@ -17,6 +17,9 @@ namespace CineNote.Views
         public AddMovieForm()
         {
             InitializeComponent();
+            dtpWatched.Enabled = false;
+            nudRating.Enabled = false;  
+            txtComment.Enabled = false;
         }
 
         private void AddMovieForm_Load(object sender, EventArgs e)
@@ -55,6 +58,22 @@ namespace CineNote.Views
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void checkBoxWatched_CheckedChanged(object sender, EventArgs e)
+        {
+            bool isChecked = checkBoxWatched.Checked;
+
+            if (!isChecked)
+            {
+                nudRating.Value = 0;
+                dtpWatched.Value = DateTime.Today;
+                txtComment.Text = string.Empty;
+            }
+
+            dtpWatched.Enabled = isChecked;
+            nudRating.Enabled = isChecked;
+            txtComment.Enabled = isChecked;
         }
     }
 }
