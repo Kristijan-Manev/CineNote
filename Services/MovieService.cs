@@ -43,20 +43,20 @@ namespace CineNote.Services
 
         public static void UpdateMovie(Movie updatedMovie)
         {
-            var all = LoadMovies();
-            var target = all.FirstOrDefault(m=>m.Title == updatedMovie.Title);
+            var list = LoadMovies();
+
+            var target = list.FirstOrDefault(m => m.Title == updatedMovie.Title 
+            && m.Genre==updatedMovie.Genre && m.Watched==false);
 
             if (target != null)
             {
-                target.Watched=updatedMovie.Watched;
+                target.Watched =updatedMovie.Watched;
                 target.DateWatched=updatedMovie.DateWatched;
                 target.Priority = updatedMovie.Priority;
-                target.Rating= updatedMovie.Rating;
+                target.Rating=updatedMovie.Rating;
                 target.Comment = updatedMovie.Comment;
-
             }
-
-            SaveAllMovies(all);
+            SaveAllMovies(list);
         }
     }
 }

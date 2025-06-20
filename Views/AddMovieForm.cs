@@ -70,7 +70,7 @@ namespace CineNote.Views
 
             if (!isChecked)
             {
-                nudRating.Value = 0;
+                nudRating.Value = 1;
                 dtpWatched.Value = DateTime.Today;
                 txtComment.Text = string.Empty;
             }

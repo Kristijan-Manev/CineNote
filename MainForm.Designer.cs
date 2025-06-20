@@ -91,6 +91,7 @@
             this.btnStats.TabIndex = 5;
             this.btnStats.Text = "Stats";
             this.btnStats.UseVisualStyleBackColor = false;
+            this.btnStats.Click += new System.EventHandler(this.btnStats_Click);
             // 
             // btnWatchlist
             // 

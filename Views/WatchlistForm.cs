@@ -16,9 +16,30 @@ namespace CineNote.Views
     public partial class WatchlistForm : Form
     {
         private List<Movie> watchlist;
+        private enum SortDir { Asc, Desc }
+
+        private sealed class ComboItem
+        {
+            public string Display { get; }
+            public SortDir Direction { get; }
+
+            public ComboItem(string display, SortDir dir)
+            {
+                Display = display;
+                Direction = dir;
+            }
+
+            public override string ToString() => Display;   // what ComboBox shows
+        }
         public WatchlistForm()
         {
             InitializeComponent();
+            comboSortPriority.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboSortPriority.Items.Clear();
+
+            comboSortPriority.Items.Add(new ComboItem("Priority (High - Low)", SortDir.Desc));
+            comboSortPriority.Items.Add(new ComboItem("Priority (Low - High)", SortDir.Asc));
+            comboSortPriority.SelectedIndex = -1; 
             LoadWatchlist();
         }
 
@@ -26,7 +47,43 @@ namespace CineNote.Views
         {
             watchlist=MovieService.LoadMovies().Where(m=>!m.Watched).OrderByDescending(m=>m.Priority).ToList();
 
-            labelCount.Text = $"You want to see {watchlist.Count} movies";
+            RefreshGrid();
+        }
+
+        private void dataGridViewWatchlist_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            if (dataGridViewWatchlist.Columns[e.ColumnIndex].Name == "MarkWatched")
+            {
+                var movie = watchlist[e.RowIndex];
+
+                movie.Watched = true;
+                movie.DateWatched = DateTime.Today;
+
+                MovieService.UpdateMovie(movie);
+                watchlist.RemoveAt(e.RowIndex);
+                RefreshGrid();
+
+                this.DialogResult = DialogResult.OK;
+            }
+        }
+
+        private void ApplyPriorityCombo()
+        {
+            if (comboSortPriority.SelectedItem is ComboItem item)
+            {
+                if (item.Direction == SortDir.Asc)
+                    watchlist = watchlist.OrderBy(m => m.Priority).ToList();
+                else                // SortDir.Desc
+                    watchlist = watchlist.OrderByDescending(m => m.Priority).ToList();
+
+                RefreshGrid();
+            }
+        }
+
+        private void RefreshGrid()
+        {
 
             dataGridViewWatchlist.DataSource = null;
             dataGridViewWatchlist.DataSource = watchlist;
@@ -36,35 +93,33 @@ namespace CineNote.Views
             dataGridViewWatchlist.Columns["Comment"].Visible = false;
             dataGridViewWatchlist.Columns["DateWatched"].Visible = false;
 
+            // 3. friendly headers
             dataGridViewWatchlist.Columns["Title"].HeaderText = "Title";
             dataGridViewWatchlist.Columns["Genre"].HeaderText = "Genre";
             dataGridViewWatchlist.Columns["Priority"].HeaderText = "Priority";
 
-            if (!dataGridViewWatchlist.Columns.Contains("MarkWatched"))
+            if (dataGridViewWatchlist.Columns.Contains("MarkWatched"))
+                dataGridViewWatchlist.Columns.Remove("MarkWatched");
+
+            var btn = new DataGridViewButtonColumn
             {
-                DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
-                btn.Name = "MarkWatched";
-                btn.HeaderText = "";
-                btn.Text = "Watched";
-                btn.UseColumnTextForButtonValue = true;
-                dataGridViewWatchlist.Columns.Add(btn);
-            }
+                Name = "MarkWatched",
+                HeaderText = "",
+                Text = "Watched",
+                UseColumnTextForButtonValue = true
+            };
+            dataGridViewWatchlist.Columns.Add(btn);
+
+            dataGridViewWatchlist.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewWatchlist.ReadOnly = true;
+
+            labelCount.Text = $"You want to see {watchlist.Count} movies.";
         }
 
-        private void dataGridViewWatchlist_CellContentClick(object sender,DataGridViewCellEventArgs e)
+
+        private void comboSortPriority_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (dataGridViewWatchlist.Columns[e.ColumnIndex].Name == "MarkWatched")
-            {
-                var movie = watchlist[e.RowIndex];
-                movie.Watched = true;
-                movie.DateWatched = DateTime.Today;
-
-                MovieService.UpdateMovie(movie);
-
-                MessageBox.Show($"Marked '{movie.Title}' as watched.");
-                LoadWatchlist();
-            }
+            ApplyPriorityCombo();
         }
-
     }
 }

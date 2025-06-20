@@ -30,6 +30,7 @@
         {
             this.labelCount = new System.Windows.Forms.Label();
             this.dataGridViewWatchlist = new System.Windows.Forms.DataGridView();
+            this.comboSortPriority = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWatchlist)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,16 +49,34 @@
             this.dataGridViewWatchlist.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewWatchlist.Location = new System.Drawing.Point(12, 35);
             this.dataGridViewWatchlist.Name = "dataGridViewWatchlist";
+            this.dataGridViewWatchlist.ReadOnly = true;
             this.dataGridViewWatchlist.RowHeadersWidth = 51;
             this.dataGridViewWatchlist.RowTemplate.Height = 24;
+            this.dataGridViewWatchlist.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewWatchlist.Size = new System.Drawing.Size(599, 232);
             this.dataGridViewWatchlist.TabIndex = 1;
+            this.dataGridViewWatchlist.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewWatchlist_CellContentClick);
+            // 
+            // comboSortPriority
+            // 
+            this.comboSortPriority.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboSortPriority.FormattingEnabled = true;
+            this.comboSortPriority.Items.AddRange(new object[] {
+            "Default",
+            "Priority (High - Low)",
+            "Priority (Low - High)"});
+            this.comboSortPriority.Location = new System.Drawing.Point(490, 8);
+            this.comboSortPriority.Name = "comboSortPriority";
+            this.comboSortPriority.Size = new System.Drawing.Size(121, 24);
+            this.comboSortPriority.TabIndex = 2;
+            this.comboSortPriority.SelectedIndexChanged += new System.EventHandler(this.comboSortPriority_SelectedIndexChanged);
             // 
             // WatchlistForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.comboSortPriority);
             this.Controls.Add(this.dataGridViewWatchlist);
             this.Controls.Add(this.labelCount);
             this.Name = "WatchlistForm";
@@ -72,5 +91,6 @@
 
         private System.Windows.Forms.Label labelCount;
         private System.Windows.Forms.DataGridView dataGridViewWatchlist;
+        private System.Windows.Forms.ComboBox comboSortPriority;
     }
 }

@@ -24,6 +24,7 @@ namespace CineNote
             SendMessage(comboSortBy.Handle, CB_SETCUEBANNER, IntPtr.Zero, "SORT BY");
             LoadAllMovies();
             UpdateGrid(movies.Where(m=>m.Watched).ToList());
+            ApplyGridTheme(dataGridViewMovies);
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -38,6 +39,12 @@ namespace CineNote
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void ApplyGridTheme(DataGridView grid)
+        {
+            grid.DefaultCellStyle.ForeColor = Color.Black;
 
         }
 
@@ -77,18 +84,20 @@ namespace CineNote
                 return;
             }
 
-            var selectedRow = dataGridViewMovies.SelectedRows[0];
-            var selectedTitle = selectedRow.Cells["Title"].Value.ToString();
+            string title = dataGridViewMovies.SelectedRows[0].Cells["Title"].Value.ToString();
+            string genre = dataGridViewMovies.SelectedRows[0].Cells["Genre"].Value.ToString();
 
-            var movies = MovieService.LoadMovies();
+            movies = MovieService.LoadMovies();
 
-            var movieToRemove = movies.FirstOrDefault(m=>m.Title == selectedTitle);
-            if(movieToRemove != null)
-            {
-                movies.Remove(movieToRemove);
-                MovieService.SaveAllMovies(movies);
-                MessageBox.Show($"Deleted '{selectedTitle}'.");
-            }
+            var target = movies.FirstOrDefault(m=>m.Title==title && m.Genre==genre);
+            if (target == null) return;
+
+            movies.Remove(target);
+            MovieService.SaveAllMovies(movies);
+
+            UpdateGrid(movies.Where(m=>m.Watched).ToList());
+            MessageBox.Show($"Deleted '{title}'.");
+
         }
 
         private void ApplyFilter()
@@ -117,6 +126,8 @@ namespace CineNote
         {
             if (dataGridViewMovies.Columns.Contains("Watched"))
                 dataGridViewMovies.Columns.Remove("Watched");
+            if (dataGridViewMovies.Columns.Contains("Priority"))
+                dataGridViewMovies.Columns["Priority"].Visible =false;
 
             if (dataGridViewMovies.Columns.Contains("Title"))
                 dataGridViewMovies.Columns["Title"].HeaderText = "Title";
@@ -198,11 +209,20 @@ namespace CineNote
 
         private void btnWatchlist_Click(object sender, EventArgs e)
         {
-            var wf = new WatchlistForm();
-            wf.ShowDialog();
-            LoadAllMovies();
-            var watchedOnly = movies.Where(m=>m.Watched).ToList();  
-            UpdateGrid(watchedOnly);
+            var watchlistForm = new WatchlistForm();
+            var result = watchlistForm.ShowDialog();
+
+            if(result== DialogResult.OK)
+            {
+                LoadAllMovies();
+                UpdateGrid(movies.Where(m=>m.Watched).ToList());
+            }
+        }
+
+        private void btnStats_Click(object sender, EventArgs e)
+        {
+            using (var sf = new StatsForm())
+            { sf.ShowDialog(); }
         }
     }
 }
