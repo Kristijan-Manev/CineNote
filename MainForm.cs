@@ -224,5 +224,36 @@ namespace CineNote
             using (var sf = new StatsForm())
             { sf.ShowDialog(); }
         }
+
+        private void dataGridViewMovies_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnEditMovie_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewMovies.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Please select a movie to edit.");
+                return;
+            }
+
+            var selectedRow = dataGridViewMovies.SelectedRows[0];
+            string selectedTitle = selectedRow.Cells["Title"].Value.ToString();
+
+            var movies = MovieService.LoadMovies();
+            var movieToEdit = movies.FirstOrDefault(m => m.Title == selectedTitle);
+
+            if (movieToEdit != null)
+            {
+                var editForm = new EditMovieForm(movieToEdit);
+                if (editForm.ShowDialog() == DialogResult.OK)
+                {
+                    MovieService.SaveAllMovies(movies);
+                    MessageBox.Show("Movie updated successfully!");
+                    UpdateGrid(movies);
+                }
+            }
+        }
     }
 }

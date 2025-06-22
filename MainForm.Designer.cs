@@ -43,6 +43,7 @@
             this.comboBoxFilter = new System.Windows.Forms.ComboBox();
             this.btnDeleteSelected = new System.Windows.Forms.Button();
             this.dataGridViewMovies = new System.Windows.Forms.DataGridView();
+            this.btnEditMovie = new System.Windows.Forms.Button();
             this.panelSidebar.SuspendLayout();
             this.panelContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMovies)).BeginInit();
@@ -136,6 +137,7 @@
             // 
             // panelContent
             // 
+            this.panelContent.Controls.Add(this.btnEditMovie);
             this.panelContent.Controls.Add(this.btnAddMovie);
             this.panelContent.Controls.Add(this.btnApplyFilter);
             this.panelContent.Controls.Add(this.comboSortBy);
@@ -254,6 +256,18 @@
             this.dataGridViewMovies.TabIndex = 0;
             this.dataGridViewMovies.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMovies_CellContentClick);
             // 
+            // btnEditMovie
+            // 
+            this.btnEditMovie.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditMovie.ForeColor = System.Drawing.Color.Black;
+            this.btnEditMovie.Location = new System.Drawing.Point(605, 289);
+            this.btnEditMovie.Name = "btnEditMovie";
+            this.btnEditMovie.Size = new System.Drawing.Size(88, 23);
+            this.btnEditMovie.TabIndex = 8;
+            this.btnEditMovie.Text = "Edit Movie";
+            this.btnEditMovie.UseVisualStyleBackColor = true;
+            this.btnEditMovie.Click += new System.EventHandler(this.btnEditMovie_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -287,6 +301,7 @@
         private System.Windows.Forms.Button btnApplyFilter;
         private System.Windows.Forms.Button btnWatchlist;
         private System.Windows.Forms.Button btnAddMovie;
+        private System.Windows.Forms.Button btnEditMovie;
     }
 }
 
