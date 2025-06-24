@@ -16,20 +16,128 @@ namespace CineNote
 {
     public partial class MainForm : Form
     {
+        private Color sidebarBg = Color.FromArgb(30, 30, 40);
+        private Color sidebarBtnBg = Color.FromArgb(40, 40, 55);
+        private Color sidebarTextColor = Color.Gainsboro;
+        private Font sidebarFont = new Font("Segoe UI", 10, FontStyle.Bold);
         private List<Movie> movies = new List<Movie>();
         public MainForm()
         {
             InitializeComponent();
+            this.BackColor = Color.FromArgb(25, 25, 35);
+
+            StyleSidebar();
+            StyleMainActionButtons();
+
             SendMessage(comboGenreFilter.Handle, CB_SETCUEBANNER, IntPtr.Zero, "GENRE");
             SendMessage(comboSortBy.Handle, CB_SETCUEBANNER, IntPtr.Zero, "SORT BY");
+            
             LoadAllMovies();
             UpdateGrid(movies.Where(m=>m.Watched).ToList());
-            ApplyGridTheme(dataGridViewMovies);
+        }
+
+        private void StyleSidebar()
+        {
+            panelSidebar.BackColor = sidebarBg;
+
+            foreach (var btn in panelSidebar.Controls.OfType<Button>())
+            {
+                btn.FlatStyle = FlatStyle.Flat;
+                btn.FlatAppearance.BorderSize = 0;
+                btn.BackColor = sidebarBtnBg;
+                btn.ForeColor = sidebarTextColor;
+                btn.Font = sidebarFont;
+                btn.TextAlign = ContentAlignment.MiddleLeft;
+                btn.Padding = new Padding(10, 0, 0, 0);
+
+                btn.MouseEnter += (s, e) => { btn.BackColor = Color.FromArgb(60, 60, 80); };
+                btn.MouseLeave += (s, e) => { btn.BackColor = sidebarBtnBg; };
+            }
+        }
+
+        private void StyleMainActionButtons()
+        {
+            var buttons = new List<Button> { btnAddMovie, btnEditMovie, btnDeleteSelected, btnApplyFilter };
+
+            foreach (var btn in buttons)
+            {
+                btn.FlatStyle = FlatStyle.Flat;
+                btn.FlatAppearance.BorderSize = 0;
+                btn.BackColor = Color.FromArgb(50, 50, 65); 
+                btn.ForeColor = Color.Gainsboro;
+                btn.Font = new Font("Segoe UI", 8f, FontStyle.Regular); 
+                btn.Padding = new Padding(8, 3, 8, 3); 
+                btn.TextAlign = ContentAlignment.MiddleCenter;
+                btn.Cursor = Cursors.Hand;
+                btn.AutoSize = false;
+                btn.Height = 25; 
+                btn.Width = 80;
+
+                btn.FlatAppearance.BorderColor = Color.FromArgb(70, 70, 90);
+                btn.FlatAppearance.BorderSize = 1;
+
+                btn.MouseEnter += (s, e) => { btn.BackColor = Color.FromArgb(60, 60, 75); };
+                btn.MouseLeave += (s, e) => { btn.BackColor = Color.FromArgb(50, 50, 65); };
+                btn.MouseEnter += (s, e) =>
+                {
+                    btn.BackColor = Color.FromArgb(60, 60, 75);
+                    btn.FlatAppearance.BorderColor = Color.FromArgb(100, 100, 130);
+                };
+
+                btn.MouseLeave += (s, e) =>
+                {
+                    btn.BackColor = Color.FromArgb(50, 50, 65);
+                    btn.FlatAppearance.BorderColor = Color.FromArgb(70, 70, 90);
+                };
+            }
+        }
+
+        private void StyleDataGridView(DataGridView grid)
+        {
+            grid.EnableHeadersVisualStyles = false;
+            grid.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(40, 40, 60);
+            grid.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            grid.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9, FontStyle.Bold);
+            grid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+
+            var backColor = Color.FromArgb(28, 28, 38);
+            var foreColor = Color.Gainsboro;
+            var selBack = Color.FromArgb(70, 70, 100);
+            var selFore = Color.White;
+
+            // 🌑 Apply to all necessary styles
+            grid.DefaultCellStyle.BackColor = backColor;
+            grid.DefaultCellStyle.ForeColor = foreColor;
+            grid.DefaultCellStyle.SelectionBackColor = selBack;
+            grid.DefaultCellStyle.SelectionForeColor = selFore;
+
+            grid.RowsDefaultCellStyle.BackColor = backColor;
+            grid.RowsDefaultCellStyle.ForeColor = foreColor;
+            grid.RowsDefaultCellStyle.SelectionBackColor = selBack;
+            grid.RowsDefaultCellStyle.SelectionForeColor = selFore;
+
+            grid.AlternatingRowsDefaultCellStyle.BackColor = backColor;
+            grid.AlternatingRowsDefaultCellStyle.ForeColor = foreColor;
+            grid.AlternatingRowsDefaultCellStyle.SelectionBackColor = selBack;
+            grid.AlternatingRowsDefaultCellStyle.SelectionForeColor = selFore;
+
+            foreach (DataGridViewColumn col in grid.Columns)
+            {
+                col.DefaultCellStyle.SelectionBackColor = selBack;
+                col.DefaultCellStyle.SelectionForeColor = selFore;
+            }
+
+            grid.BorderStyle = BorderStyle.None;
+            grid.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            grid.RowHeadersVisible = false;
+            grid.AllowUserToResizeRows = false;
+            grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            grid.ReadOnly = true;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-
+            SetHeaders();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -39,12 +147,6 @@ namespace CineNote
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void ApplyGridTheme(DataGridView grid)
-        {
-            grid.DefaultCellStyle.ForeColor = Color.Black;
 
         }
 
@@ -124,8 +226,9 @@ namespace CineNote
 
         private void SetHeaders()
         {
-            if (dataGridViewMovies.Columns.Contains("Watched"))
+              if (dataGridViewMovies.Columns.Contains("Watched"))
                 dataGridViewMovies.Columns.Remove("Watched");
+            
             if (dataGridViewMovies.Columns.Contains("Priority"))
                 dataGridViewMovies.Columns["Priority"].Visible =false;
 
@@ -147,7 +250,10 @@ namespace CineNote
             dataGridViewMovies.DataSource = null;
             dataGridViewMovies.DataSource = list;
 
+            StyleDataGridView(dataGridViewMovies);
             SetHeaders();
+
+            dataGridViewMovies.CurrentCell = null;
         }
 
         private void btnApplyFilter_Click(object sender, EventArgs e)
@@ -255,5 +361,13 @@ namespace CineNote
                 }
             }
         }
+
+        private void btnRecommendations_Click(object sender, EventArgs e)
+        {
+            var recsForm = new RecommendationsForm();
+            recsForm.ShowDialog();
+        }
+
+
     }
 }

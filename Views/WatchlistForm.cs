@@ -31,6 +31,28 @@ namespace CineNote.Views
 
             public override string ToString() => Display;   // what ComboBox shows
         }
+
+        private void StyleDataGridView(DataGridView grid)
+        {
+            grid.EnableHeadersVisualStyles = false;
+            grid.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(40, 40, 60);
+            grid.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            grid.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9, FontStyle.Bold);
+            grid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+
+            grid.DefaultCellStyle.BackColor = Color.FromArgb(28, 28, 38);
+            grid.DefaultCellStyle.ForeColor = Color.Gainsboro;
+            grid.DefaultCellStyle.SelectionBackColor = Color.FromArgb(70, 70, 100);
+            grid.DefaultCellStyle.SelectionForeColor = Color.White;
+
+            grid.BorderStyle = BorderStyle.None;
+            grid.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+
+            grid.RowHeadersVisible = false;
+            grid.AllowUserToResizeRows = false;
+            grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            grid.ReadOnly = true;
+        }
         public WatchlistForm()
         {
             InitializeComponent();
@@ -88,12 +110,13 @@ namespace CineNote.Views
             dataGridViewWatchlist.DataSource = null;
             dataGridViewWatchlist.DataSource = watchlist;
 
+            StyleDataGridView(dataGridViewWatchlist);
+
             dataGridViewWatchlist.Columns["Watched"].Visible = false;
             dataGridViewWatchlist.Columns["Rating"].Visible = false;
             dataGridViewWatchlist.Columns["Comment"].Visible = false;
             dataGridViewWatchlist.Columns["DateWatched"].Visible = false;
 
-            // 3. friendly headers
             dataGridViewWatchlist.Columns["Title"].HeaderText = "Title";
             dataGridViewWatchlist.Columns["Genre"].HeaderText = "Genre";
             dataGridViewWatchlist.Columns["Priority"].HeaderText = "Priority";
