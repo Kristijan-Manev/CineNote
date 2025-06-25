@@ -21,6 +21,8 @@ namespace CineNote.Views
             dtpWatched.Enabled = false;
             nudRating.Enabled = false;  
             txtComment.Enabled = false;
+
+            numericPriority.Enabled = true;
         }
 
         private void AddMovieForm_Load(object sender, EventArgs e)
@@ -78,6 +80,8 @@ namespace CineNote.Views
             dtpWatched.Enabled = isChecked;
             nudRating.Enabled = isChecked;
             txtComment.Enabled = isChecked;
+
+            numericPriority.Enabled = !isChecked;
         }
     }
 }

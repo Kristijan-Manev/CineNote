@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelSidebar = new System.Windows.Forms.Panel();
             this.btnRecommendations = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
@@ -205,23 +205,27 @@
             // 
             // comboSortBy
             // 
+            this.comboSortBy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(38)))));
+            this.comboSortBy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboSortBy.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboSortBy.ForeColor = System.Drawing.Color.Gainsboro;
             this.comboSortBy.FormattingEnabled = true;
             this.comboSortBy.Items.AddRange(new object[] {
             "Title (A-Z)",
             "Title (Z-A)",
-            "Rating (High to Low)",
-            "Rating (Low to High)",
             "Date Watched (Newest First)",
             "Date Watched (Oldest First)"});
             this.comboSortBy.Location = new System.Drawing.Point(257, 4);
             this.comboSortBy.Name = "comboSortBy";
-            this.comboSortBy.Size = new System.Drawing.Size(142, 25);
+            this.comboSortBy.Size = new System.Drawing.Size(152, 25);
             this.comboSortBy.TabIndex = 5;
             // 
             // comboGenreFilter
             // 
+            this.comboGenreFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(38)))));
+            this.comboGenreFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboGenreFilter.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboGenreFilter.ForeColor = System.Drawing.Color.Gainsboro;
             this.comboGenreFilter.FormattingEnabled = true;
             this.comboGenreFilter.Items.AddRange(new object[] {
             "All",
@@ -239,12 +243,14 @@
             // 
             // comboBoxFilter
             // 
+            this.comboBoxFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(38)))));
+            this.comboBoxFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBoxFilter.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxFilter.ForeColor = System.Drawing.Color.Gainsboro;
             this.comboBoxFilter.FormattingEnabled = true;
             this.comboBoxFilter.Items.AddRange(new object[] {
-            "All",
-            "Watched",
-            "Watchlist"});
+            "Rating (High-Low)",
+            "Rating (Low-High)"});
             this.comboBoxFilter.Location = new System.Drawing.Point(3, 4);
             this.comboBoxFilter.Name = "comboBoxFilter";
             this.comboBoxFilter.Size = new System.Drawing.Size(121, 25);
@@ -266,14 +272,14 @@
             // 
             this.dataGridViewMovies.AllowUserToAddRows = false;
             this.dataGridViewMovies.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewMovies.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewMovies.DefaultCellStyle = dataGridViewCellStyle12;
             this.dataGridViewMovies.Location = new System.Drawing.Point(0, 34);
             this.dataGridViewMovies.Name = "dataGridViewMovies";
             this.dataGridViewMovies.ReadOnly = true;

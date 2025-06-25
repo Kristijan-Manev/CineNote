@@ -97,7 +97,7 @@
             this.txtComment.Location = new System.Drawing.Point(13, 235);
             this.txtComment.Multiline = true;
             this.txtComment.Name = "txtComment";
-            this.txtComment.Size = new System.Drawing.Size(200, 22);
+            this.txtComment.Size = new System.Drawing.Size(200, 52);
             this.txtComment.TabIndex = 5;
             // 
             // dtpWatched
@@ -152,7 +152,7 @@
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(12, 322);
+            this.btnSave.Location = new System.Drawing.Point(12, 354);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(100, 27);
             this.btnSave.TabIndex = 10;
@@ -163,7 +163,7 @@
             // btnCancel
             // 
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(117, 321);
+            this.btnCancel.Location = new System.Drawing.Point(118, 353);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(96, 28);
             this.btnCancel.TabIndex = 11;
@@ -175,7 +175,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(110, 403);
+            this.label6.Location = new System.Drawing.Point(123, 408);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(173, 38);
             this.label6.TabIndex = 12;
@@ -185,7 +185,7 @@
             // checkBoxWatched
             // 
             this.checkBoxWatched.AutoSize = true;
-            this.checkBoxWatched.Location = new System.Drawing.Point(130, 286);
+            this.checkBoxWatched.Location = new System.Drawing.Point(130, 313);
             this.checkBoxWatched.Name = "checkBoxWatched";
             this.checkBoxWatched.Size = new System.Drawing.Size(83, 20);
             this.checkBoxWatched.TabIndex = 13;
@@ -197,7 +197,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(10, 260);
+            this.label7.Location = new System.Drawing.Point(9, 290);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(56, 20);
             this.label7.TabIndex = 14;
@@ -205,7 +205,7 @@
             // 
             // numericPriority
             // 
-            this.numericPriority.Location = new System.Drawing.Point(13, 284);
+            this.numericPriority.Location = new System.Drawing.Point(13, 313);
             this.numericPriority.Maximum = new decimal(new int[] {
             5,
             0,
@@ -229,7 +229,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(291, 450);
+            this.ClientSize = new System.Drawing.Size(303, 455);
             this.Controls.Add(this.numericPriority);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.checkBoxWatched);

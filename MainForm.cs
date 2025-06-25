@@ -31,7 +31,8 @@ namespace CineNote
 
             SendMessage(comboGenreFilter.Handle, CB_SETCUEBANNER, IntPtr.Zero, "GENRE");
             SendMessage(comboSortBy.Handle, CB_SETCUEBANNER, IntPtr.Zero, "SORT BY");
-            
+            SendMessage(comboBoxFilter.Handle, CB_SETCUEBANNER, IntPtr.Zero, "RATING");
+
             LoadAllMovies();
             UpdateGrid(movies.Where(m=>m.Watched).ToList());
         }
@@ -100,12 +101,14 @@ namespace CineNote
             grid.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9, FontStyle.Bold);
             grid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
 
+            grid.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(70, 70, 100);
+            grid.ColumnHeadersDefaultCellStyle.SelectionForeColor = Color.White;
+
             var backColor = Color.FromArgb(28, 28, 38);
             var foreColor = Color.Gainsboro;
             var selBack = Color.FromArgb(70, 70, 100);
             var selFore = Color.White;
 
-            // 🌑 Apply to all necessary styles
             grid.DefaultCellStyle.BackColor = backColor;
             grid.DefaultCellStyle.ForeColor = foreColor;
             grid.DefaultCellStyle.SelectionBackColor = selBack;
@@ -152,7 +155,6 @@ namespace CineNote
 
         [System.Runtime.InteropServices.DllImport("user32.dll", CharSet = System.Runtime.InteropServices.CharSet.Unicode)]
         private static extern IntPtr SendMessage(IntPtr hWnd, int msg, IntPtr wParam, string lParam);
-
         private const int CB_SETCUEBANNER = 0x1703;
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -201,32 +203,9 @@ namespace CineNote
             MessageBox.Show($"Deleted '{title}'.");
 
         }
-
-        private void ApplyFilter()
-        {
-            string filter = comboBoxFilter.SelectedItem.ToString();
-
-            List<Movie> filtered;
-
-            if (filter == "Watched")
-            {
-                filtered = movies.Where(m => m.Watched).ToList();
-            }
-            else if (filter == "Watchlist")
-            {
-                filtered = movies.Where(m => !m.Watched).ToList();
-            }
-            else
-                filtered = movies;
-
-            dataGridViewMovies.DataSource = null;
-            dataGridViewMovies.DataSource = filtered;
-
-        }
-
         private void SetHeaders()
         {
-              if (dataGridViewMovies.Columns.Contains("Watched"))
+            if (dataGridViewMovies.Columns.Contains("Watched"))
                 dataGridViewMovies.Columns.Remove("Watched");
             
             if (dataGridViewMovies.Columns.Contains("Priority"))
@@ -242,7 +221,6 @@ namespace CineNote
                 dataGridViewMovies.Columns["Comment"].HeaderText = "Your Review";
             if (dataGridViewMovies.Columns.Contains("DateWatched"))
                 dataGridViewMovies.Columns["DateWatched"].HeaderText = "Date Watched";
-
         }
 
         private void UpdateGrid(List<Movie> list)
@@ -258,18 +236,23 @@ namespace CineNote
 
         private void btnApplyFilter_Click(object sender, EventArgs e)
         {
-            var filtered = movies;
-
-            string status = comboBoxFilter.SelectedItem?.ToString()??"All";
-            if (status == "Watched")
-                filtered = filtered.Where(m => m.Watched).ToList();
-            else if(status=="Watchlist")
-                filtered=filtered.Where(m=>!m.Watched).ToList();
+            var filtered = movies.Where(m=>m.Watched).ToList();
 
             string selectedGenre = comboGenreFilter.SelectedItem?.ToString();   
             if(!string.IsNullOrWhiteSpace(selectedGenre) && selectedGenre!="All") 
-            { 
                 filtered=filtered.Where(m=>m.Genre==selectedGenre).ToList();
+
+            string ratingSort = comboBoxFilter.SelectedItem?.ToString();
+            switch(ratingSort)
+            {
+                case "Rating (High-Low)":
+                    filtered = filtered.OrderByDescending(m => m.Rating).ToList();
+                    break;
+                case "Rating (Low-High)":
+                    filtered = filtered.OrderBy(m => m.Rating).ToList();
+                    break;             
+                default:
+                    break;
             }
 
             string sortOption = comboSortBy.SelectedItem?.ToString();
@@ -280,13 +263,7 @@ namespace CineNote
                     break;
                 case "Title (Z-A)":
                     filtered = filtered.OrderByDescending(m => m.Title).ToList();
-                    break;
-                case "Rating (High to Low)":
-                    filtered = filtered.OrderByDescending(m => m.Rating).ToList();
-                    break;
-                case "Rating (Low to High)":
-                    filtered = filtered.OrderBy(m => m.Rating).ToList();
-                    break;
+                    break;      
                 case "Date Watched (Newest First)":
                     filtered = filtered.OrderByDescending(m => m.DateWatched).ToList();
                     break;
@@ -295,7 +272,6 @@ namespace CineNote
                     break;
                 default:
                     break;
-
             }
 
             UpdateGrid(filtered);
@@ -340,7 +316,7 @@ namespace CineNote
         {
             if (dataGridViewMovies.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Please select a movie to edit.");
+                MessageBox.Show("Please select a movie to edit!");
                 return;
             }
 
@@ -356,8 +332,9 @@ namespace CineNote
                 if (editForm.ShowDialog() == DialogResult.OK)
                 {
                     MovieService.SaveAllMovies(movies);
+                    LoadAllMovies();
+                    UpdateGrid(movies.Where(m => m.Watched).ToList());
                     MessageBox.Show("Movie updated successfully!");
-                    UpdateGrid(movies);
                 }
             }
         }
@@ -367,7 +344,6 @@ namespace CineNote
             var recsForm = new RecommendationsForm();
             recsForm.ShowDialog();
         }
-
 
     }
 }
