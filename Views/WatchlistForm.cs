@@ -18,6 +18,46 @@ namespace CineNote.Views
         private List<Movie> watchlist;
         private enum SortDir { Asc, Desc }
 
+        public WatchlistForm()
+        {
+            InitializeComponent();
+            this.BackColor = Color.FromArgb(25, 25, 35); 
+
+            StyleLabel(labelCount);
+            StyleComboBox(comboSortPriority);
+
+            comboSortPriority.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboSortPriority.Items.Clear();
+
+            comboSortPriority.Items.Add(new ComboItem("Priority (High - Low)", SortDir.Desc));
+            comboSortPriority.Items.Add(new ComboItem("Priority (Low - High)", SortDir.Asc));
+            comboSortPriority.SelectedIndex = -1;
+
+            LoadWatchlist();
+        }
+
+        private void StyleLabel(Label label)
+        {
+            label.ForeColor = Color.Gainsboro;
+            label.Font = new Font("Segoe UI", 10f, FontStyle.Bold);
+            label.BackColor = Color.Transparent;
+        }
+
+        private void StyleComboBox(ComboBox combo)
+        {
+            combo.BackColor = Color.FromArgb(35, 35, 50);
+            combo.ForeColor = Color.Gainsboro;
+            combo.FlatStyle = FlatStyle.Flat;
+            combo.Font = new Font("Segoe UI", 9f, FontStyle.Regular);
+
+            combo.Paint += (_, pe) =>
+            {
+                var r = combo.ClientRectangle;
+                r.Inflate(-1, -1);
+                pe.Graphics.DrawRectangle(new Pen(Color.FromArgb(60, 60, 80)), r);
+            };
+        }
+
         private sealed class ComboItem
         {
             public string Display { get; }
@@ -53,18 +93,7 @@ namespace CineNote.Views
             grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             grid.ReadOnly = true;
         }
-        public WatchlistForm()
-        {
-            InitializeComponent();
-            comboSortPriority.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboSortPriority.Items.Clear();
-
-            comboSortPriority.Items.Add(new ComboItem("Priority (High - Low)", SortDir.Desc));
-            comboSortPriority.Items.Add(new ComboItem("Priority (Low - High)", SortDir.Asc));
-            comboSortPriority.SelectedIndex = -1; 
-            LoadWatchlist();
-        }
-
+        
         private void LoadWatchlist()
         {
             watchlist=MovieService.LoadMovies().Where(m=>!m.Watched).OrderByDescending(m=>m.Priority).ToList();
@@ -128,13 +157,19 @@ namespace CineNote.Views
             {
                 Name = "MarkWatched",
                 HeaderText = "",
-                Text = "Watched",
-                UseColumnTextForButtonValue = true
+                Text = "✓ Watched",
+                UseColumnTextForButtonValue = true,
+                FlatStyle = FlatStyle.Flat
             };
+
             dataGridViewWatchlist.Columns.Add(btn);
 
             dataGridViewWatchlist.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewWatchlist.ReadOnly = true;
+            dataGridViewWatchlist.Columns["MarkWatched"].DefaultCellStyle.BackColor = Color.FromArgb(50, 50, 70);
+            dataGridViewWatchlist.Columns["MarkWatched"].DefaultCellStyle.ForeColor = Color.Gainsboro;
+            dataGridViewWatchlist.Columns["MarkWatched"].DefaultCellStyle.Font = new Font("Segoe UI", 8.5f, FontStyle.Bold);
+            dataGridViewWatchlist.Columns["MarkWatched"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             labelCount.Text = $"You want to see {watchlist.Count} movies.";
         }

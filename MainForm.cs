@@ -33,6 +33,10 @@ namespace CineNote
             SendMessage(comboSortBy.Handle, CB_SETCUEBANNER, IntPtr.Zero, "SORT BY");
             SendMessage(comboBoxFilter.Handle, CB_SETCUEBANNER, IntPtr.Zero, "RATING");
 
+            StyleInput(comboGenreFilter);
+            StyleInput(comboBoxFilter);  
+            StyleInput(comboSortBy);
+
             LoadAllMovies();
             UpdateGrid(movies.Where(m=>m.Watched).ToList());
         }
@@ -63,19 +67,16 @@ namespace CineNote
             foreach (var btn in buttons)
             {
                 btn.FlatStyle = FlatStyle.Flat;
-                btn.FlatAppearance.BorderSize = 0;
-                btn.BackColor = Color.FromArgb(50, 50, 65); 
+                btn.BackColor = Color.FromArgb(40, 40, 55);
                 btn.ForeColor = Color.Gainsboro;
-                btn.Font = new Font("Segoe UI", 8f, FontStyle.Regular); 
-                btn.Padding = new Padding(8, 3, 8, 3); 
-                btn.TextAlign = ContentAlignment.MiddleCenter;
-                btn.Cursor = Cursors.Hand;
-                btn.AutoSize = false;
-                btn.Height = 25; 
-                btn.Width = 80;
 
-                btn.FlatAppearance.BorderColor = Color.FromArgb(70, 70, 90);
+                btn.Font = new Font("Segoe UI", 8.5f, FontStyle.Bold);
+                btn.Height = 25;             
+                btn.Width = 90;         
+                btn.Padding = new Padding(6, 2, 6, 2);   
+
                 btn.FlatAppearance.BorderSize = 1;
+                btn.FlatAppearance.BorderColor = Color.FromArgb(60, 60, 80);
 
                 btn.MouseEnter += (s, e) => { btn.BackColor = Color.FromArgb(60, 60, 75); };
                 btn.MouseLeave += (s, e) => { btn.BackColor = Color.FromArgb(50, 50, 65); };
@@ -91,6 +92,20 @@ namespace CineNote
                     btn.FlatAppearance.BorderColor = Color.FromArgb(70, 70, 90);
                 };
             }
+        }
+
+        private static void StyleInput(Control ctl)
+        {
+            var bg = Color.FromArgb(35, 35, 50);
+            ctl.BackColor = bg;
+            ctl.ForeColor = Color.Gainsboro;
+
+            ctl.Paint += (_, pe) =>
+            {
+                var r = ctl.ClientRectangle;
+                r.Inflate(-1, -1);
+                pe.Graphics.DrawRectangle(new Pen(Color.FromArgb(60, 60, 80)), r);
+            };
         }
 
         private void StyleDataGridView(DataGridView grid)

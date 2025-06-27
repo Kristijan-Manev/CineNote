@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelSidebar = new System.Windows.Forms.Panel();
-            this.btnRecommendations = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
+            this.btnRecommendations = new System.Windows.Forms.Button();
             this.btnStats = new System.Windows.Forms.Button();
             this.btnWatchlist = new System.Windows.Forms.Button();
             this.btnHome = new System.Windows.Forms.Button();
@@ -66,20 +66,6 @@
             this.panelSidebar.Size = new System.Drawing.Size(210, 450);
             this.panelSidebar.TabIndex = 0;
             // 
-            // btnRecommendations
-            // 
-            this.btnRecommendations.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnRecommendations.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRecommendations.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRecommendations.ForeColor = System.Drawing.Color.White;
-            this.btnRecommendations.Location = new System.Drawing.Point(0, 101);
-            this.btnRecommendations.Name = "btnRecommendations";
-            this.btnRecommendations.Size = new System.Drawing.Size(210, 35);
-            this.btnRecommendations.TabIndex = 8;
-            this.btnRecommendations.Text = "Recommendations";
-            this.btnRecommendations.UseVisualStyleBackColor = true;
-            this.btnRecommendations.Click += new System.EventHandler(this.btnRecommendations_Click);
-            // 
             // btnExit
             // 
             this.btnExit.BackColor = System.Drawing.Color.Transparent;
@@ -94,6 +80,20 @@
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // btnRecommendations
+            // 
+            this.btnRecommendations.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnRecommendations.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRecommendations.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRecommendations.ForeColor = System.Drawing.Color.White;
+            this.btnRecommendations.Location = new System.Drawing.Point(0, 101);
+            this.btnRecommendations.Name = "btnRecommendations";
+            this.btnRecommendations.Size = new System.Drawing.Size(210, 35);
+            this.btnRecommendations.TabIndex = 8;
+            this.btnRecommendations.Text = "Recommendations";
+            this.btnRecommendations.UseVisualStyleBackColor = true;
+            this.btnRecommendations.Click += new System.EventHandler(this.btnRecommendations_Click);
             // 
             // btnStats
             // 
@@ -165,14 +165,14 @@
             this.panelContent.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.panelContent.Location = new System.Drawing.Point(210, 0);
             this.panelContent.Name = "panelContent";
-            this.panelContent.Size = new System.Drawing.Size(671, 450);
+            this.panelContent.Size = new System.Drawing.Size(655, 450);
             this.panelContent.TabIndex = 1;
             // 
             // btnEditMovie
             // 
             this.btnEditMovie.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditMovie.ForeColor = System.Drawing.Color.Black;
-            this.btnEditMovie.Location = new System.Drawing.Point(546, 290);
+            this.btnEditMovie.Location = new System.Drawing.Point(535, 290);
             this.btnEditMovie.Name = "btnEditMovie";
             this.btnEditMovie.Size = new System.Drawing.Size(98, 23);
             this.btnEditMovie.TabIndex = 8;
@@ -195,9 +195,9 @@
             // btnApplyFilter
             // 
             this.btnApplyFilter.ForeColor = System.Drawing.Color.Black;
-            this.btnApplyFilter.Location = new System.Drawing.Point(549, 6);
+            this.btnApplyFilter.Location = new System.Drawing.Point(524, 8);
             this.btnApplyFilter.Name = "btnApplyFilter";
-            this.btnApplyFilter.Size = new System.Drawing.Size(95, 23);
+            this.btnApplyFilter.Size = new System.Drawing.Size(109, 26);
             this.btnApplyFilter.TabIndex = 6;
             this.btnApplyFilter.Text = "Apply Filter";
             this.btnApplyFilter.UseVisualStyleBackColor = true;
@@ -272,14 +272,14 @@
             // 
             this.dataGridViewMovies.AllowUserToAddRows = false;
             this.dataGridViewMovies.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewMovies.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewMovies.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewMovies.Location = new System.Drawing.Point(0, 34);
             this.dataGridViewMovies.Name = "dataGridViewMovies";
             this.dataGridViewMovies.ReadOnly = true;
@@ -294,7 +294,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(881, 450);
+            this.ClientSize = new System.Drawing.Size(865, 450);
             this.Controls.Add(this.panelContent);
             this.Controls.Add(this.panelSidebar);
             this.Name = "MainForm";

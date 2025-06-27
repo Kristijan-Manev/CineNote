@@ -18,11 +18,53 @@ namespace CineNote.Views
         public AddMovieForm()
         {
             InitializeComponent();
+            StyleFormButton(btnSave);
+            StyleFormButton(btnCancel);
+
+            StyleInput(txtTitle);
+            StyleInput(txtGenre);
+            StyleInput(nudRating);
+            StyleInput(numericPriority);
+            StyleInput(txtComment);
+            StyleInput(dtpWatched);
+
+
             dtpWatched.Enabled = false;
             nudRating.Enabled = false;  
             txtComment.Enabled = false;
 
             numericPriority.Enabled = true;
+        }
+
+        void StyleFormButton(Button btn)
+        {
+            btn.FlatStyle = FlatStyle.Flat;
+            btn.BackColor = Color.FromArgb(40, 40, 55);   
+            btn.ForeColor = Color.Gainsboro;
+            btn.Font = new Font("Segoe UI", 7, FontStyle.Bold);
+
+            btn.Padding = new Padding(10, 4, 10, 4);    
+            btn.Height = 22;                       
+            btn.Width = 100;                       
+            btn.FlatAppearance.BorderSize = 1;
+            btn.FlatAppearance.BorderColor = Color.FromArgb(60, 60, 80);
+
+            btn.MouseEnter += (_, __) => btn.BackColor = Color.FromArgb(60, 60, 75);
+            btn.MouseLeave += (_, __) => btn.BackColor = Color.FromArgb(50, 50, 65);
+        }
+
+        private static void StyleInput(Control ctl)
+        {
+            var bg = Color.FromArgb(35, 35, 50);
+            ctl.BackColor = bg;
+            ctl.ForeColor = Color.Gainsboro;
+
+            ctl.Paint += (_, pe) =>
+            {
+                var r = ctl.ClientRectangle;
+                r.Inflate(-1, -1);
+                pe.Graphics.DrawRectangle(new Pen(Color.FromArgb(60, 60, 80)), r);
+            };
         }
 
         private void AddMovieForm_Load(object sender, EventArgs e)
