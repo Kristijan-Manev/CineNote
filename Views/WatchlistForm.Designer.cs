@@ -75,11 +75,11 @@
             // labelPage
             // 
             this.labelPage.AutoSize = true;
-            this.labelPage.Font = new System.Drawing.Font("Segoe UI", 16.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPage.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelPage.ForeColor = System.Drawing.Color.Gainsboro;
             this.labelPage.Location = new System.Drawing.Point(476, 326);
             this.labelPage.Name = "labelPage";
-            this.labelPage.Size = new System.Drawing.Size(144, 38);
+            this.labelPage.Size = new System.Drawing.Size(139, 38);
             this.labelPage.TabIndex = 3;
             this.labelPage.Text = "Watchlist";
             // 

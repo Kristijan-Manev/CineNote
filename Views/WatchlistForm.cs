@@ -16,6 +16,7 @@ namespace CineNote.Views
     public partial class WatchlistForm : Form
     {
         private List<Movie> watchlist;
+        private List<Movie> originalOrder;
         private enum SortDir { Asc, Desc }
 
         public WatchlistForm()
@@ -69,7 +70,7 @@ namespace CineNote.Views
                 Direction = dir;
             }
 
-            public override string ToString() => Display;   // what ComboBox shows
+            public override string ToString() => Display;   
         }
 
         private void StyleDataGridView(DataGridView grid)
@@ -88,6 +89,15 @@ namespace CineNote.Views
             grid.BorderStyle = BorderStyle.None;
             grid.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
 
+            var selBack = Color.FromArgb(60, 60, 90);   
+            var selFore = Color.White;
+            grid.DefaultCellStyle.SelectionBackColor = selBack;
+            grid.DefaultCellStyle.SelectionForeColor = selFore;
+            grid.ColumnHeadersDefaultCellStyle.SelectionBackColor = selBack;
+            grid.ColumnHeadersDefaultCellStyle.SelectionForeColor = selFore;
+
+            grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
             grid.RowHeadersVisible = false;
             grid.AllowUserToResizeRows = false;
             grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -96,7 +106,11 @@ namespace CineNote.Views
         
         private void LoadWatchlist()
         {
-            watchlist=MovieService.LoadMovies().Where(m=>!m.Watched).OrderByDescending(m=>m.Priority).ToList();
+            watchlist = MovieService.LoadMovies()
+                 .Where(m => !m.Watched)
+                 .ToList();
+
+            originalOrder = new List<Movie>(watchlist);
 
             RefreshGrid();
         }
@@ -122,15 +136,18 @@ namespace CineNote.Views
 
         private void ApplyPriorityCombo()
         {
-            if (comboSortPriority.SelectedItem is ComboItem item)
+            if (comboSortPriority.SelectedIndex < 0)
             {
-                if (item.Direction == SortDir.Asc)
-                    watchlist = watchlist.OrderBy(m => m.Priority).ToList();
-                else                // SortDir.Desc
-                    watchlist = watchlist.OrderByDescending(m => m.Priority).ToList();
-
-                RefreshGrid();
+               watchlist = new List<Movie>(originalOrder);
             }
+            else if (comboSortPriority.SelectedItem is ComboItem item)
+            {
+               watchlist = item.Direction == SortDir.Asc
+                         ? originalOrder.OrderBy(m => m.Priority).ToList()
+                         : originalOrder.OrderByDescending(m => m.Priority).ToList();
+            }
+            
+            RefreshGrid();
         }
 
         private void RefreshGrid()
@@ -140,6 +157,8 @@ namespace CineNote.Views
             dataGridViewWatchlist.DataSource = watchlist;
 
             StyleDataGridView(dataGridViewWatchlist);
+            if (dataGridViewWatchlist.Columns.Contains("Priority"))
+                dataGridViewWatchlist.Columns["Priority"].Visible = false;
 
             dataGridViewWatchlist.Columns["Watched"].Visible = false;
             dataGridViewWatchlist.Columns["Rating"].Visible = false;
@@ -148,8 +167,7 @@ namespace CineNote.Views
 
             dataGridViewWatchlist.Columns["Title"].HeaderText = "Title";
             dataGridViewWatchlist.Columns["Genre"].HeaderText = "Genre";
-            dataGridViewWatchlist.Columns["Priority"].HeaderText = "Priority";
-
+       
             if (dataGridViewWatchlist.Columns.Contains("MarkWatched"))
                 dataGridViewWatchlist.Columns.Remove("MarkWatched");
 
@@ -163,6 +181,11 @@ namespace CineNote.Views
             };
 
             dataGridViewWatchlist.Columns.Add(btn);
+
+            dataGridViewWatchlist.Columns["Title"].FillWeight = 45;
+            dataGridViewWatchlist.Columns["Genre"].FillWeight = 35;
+            dataGridViewWatchlist.Columns["MarkWatched"].FillWeight = 20;
+            dataGridViewWatchlist.Columns["MarkWatched"].MinimumWidth = 90;
 
             dataGridViewWatchlist.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewWatchlist.ReadOnly = true;
