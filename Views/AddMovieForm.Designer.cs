@@ -31,7 +31,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtGenre = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtComment = new System.Windows.Forms.TextBox();
             this.dtpWatched = new System.Windows.Forms.DateTimePicker();
@@ -44,6 +43,7 @@
             this.checkBoxWatched = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
             this.numericPriority = new System.Windows.Forms.NumericUpDown();
+            this.cmbGenre = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.nudRating)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericPriority)).BeginInit();
             this.SuspendLayout();
@@ -80,17 +80,6 @@
             this.label2.Size = new System.Drawing.Size(51, 20);
             this.label2.TabIndex = 2;
             this.label2.Text = "Genre";
-            // 
-            // txtGenre
-            // 
-            this.txtGenre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(25)))), ((int)(((byte)(40)))));
-            this.txtGenre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtGenre.ForeColor = System.Drawing.Color.Gainsboro;
-            this.txtGenre.Location = new System.Drawing.Point(13, 90);
-            this.txtGenre.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtGenre.Name = "txtGenre";
-            this.txtGenre.Size = new System.Drawing.Size(200, 27);
-            this.txtGenre.TabIndex = 3;
             // 
             // label3
             // 
@@ -257,12 +246,34 @@
             0,
             0});
             // 
+            // cmbGenre
+            // 
+            this.cmbGenre.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbGenre.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbGenre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbGenre.FormattingEnabled = true;
+            this.cmbGenre.Items.AddRange(new object[] {
+            "Action",
+            "Animation",
+            "Comedy",
+            "Drama",
+            "Fantasy",
+            "Horror",
+            "Romance",
+            "Sci‑Fi",
+            "Thriller"});
+            this.cmbGenre.Location = new System.Drawing.Point(13, 90);
+            this.cmbGenre.Name = "cmbGenre";
+            this.cmbGenre.Size = new System.Drawing.Size(199, 28);
+            this.cmbGenre.TabIndex = 16;
+            // 
             // AddMovieForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(35)))));
             this.ClientSize = new System.Drawing.Size(294, 501);
+            this.Controls.Add(this.cmbGenre);
             this.Controls.Add(this.numericPriority);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.checkBoxWatched);
@@ -275,7 +286,6 @@
             this.Controls.Add(this.dtpWatched);
             this.Controls.Add(this.txtComment);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtGenre);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtTitle);
             this.Controls.Add(this.label1);
@@ -298,7 +308,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtTitle;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtGenre;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtComment;
         private System.Windows.Forms.DateTimePicker dtpWatched;
@@ -311,5 +320,6 @@
         private System.Windows.Forms.CheckBox checkBoxWatched;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.NumericUpDown numericPriority;
+        private System.Windows.Forms.ComboBox cmbGenre;
     }
 }

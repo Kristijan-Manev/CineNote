@@ -31,26 +31,27 @@
             this.label6 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSaveChanges = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
+            this.labelReview = new System.Windows.Forms.Label();
             this.nudRating = new System.Windows.Forms.NumericUpDown();
-            this.label4 = new System.Windows.Forms.Label();
+            this.labelRating = new System.Windows.Forms.Label();
             this.dtpWatched = new System.Windows.Forms.DateTimePicker();
             this.txtComment = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtGenre = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.labelDateWatched = new System.Windows.Forms.Label();
+            this.labelGenre = new System.Windows.Forms.Label();
             this.txtTitle = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelText = new System.Windows.Forms.Label();
+            this.cmbGenre = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.nudRating)).BeginInit();
             this.SuspendLayout();
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(641, 9);
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Gainsboro;
+            this.label6.Location = new System.Drawing.Point(109, 403);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(147, 38);
+            this.label6.Size = new System.Drawing.Size(158, 38);
             this.label6.TabIndex = 28;
             this.label6.Text = "Edit Movie";
             // 
@@ -63,6 +64,7 @@
             this.btnCancel.TabIndex = 27;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSaveChanges
             // 
@@ -75,15 +77,15 @@
             this.btnSaveChanges.UseVisualStyleBackColor = true;
             this.btnSaveChanges.Click += new System.EventHandler(this.btnSaveChanges_Click);
             // 
-            // label5
+            // labelReview
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(8, 217);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(56, 20);
-            this.label5.TabIndex = 25;
-            this.label5.Text = "Review";
+            this.labelReview.AutoSize = true;
+            this.labelReview.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelReview.Location = new System.Drawing.Point(8, 217);
+            this.labelReview.Name = "labelReview";
+            this.labelReview.Size = new System.Drawing.Size(56, 20);
+            this.labelReview.TabIndex = 25;
+            this.labelReview.Text = "Review";
             // 
             // nudRating
             // 
@@ -107,15 +109,15 @@
             0,
             0});
             // 
-            // label4
+            // labelRating
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(8, 165);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(88, 20);
-            this.label4.TabIndex = 23;
-            this.label4.Text = "Rating (1-5)";
+            this.labelRating.AutoSize = true;
+            this.labelRating.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRating.Location = new System.Drawing.Point(8, 165);
+            this.labelRating.Name = "labelRating";
+            this.labelRating.Size = new System.Drawing.Size(88, 20);
+            this.labelRating.TabIndex = 23;
+            this.labelRating.Text = "Rating (1-5)";
             // 
             // dtpWatched
             // 
@@ -132,32 +134,25 @@
             this.txtComment.Size = new System.Drawing.Size(200, 22);
             this.txtComment.TabIndex = 21;
             // 
-            // label3
+            // labelDateWatched
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(8, 111);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(103, 20);
-            this.label3.TabIndex = 20;
-            this.label3.Text = "Date Watched";
+            this.labelDateWatched.AutoSize = true;
+            this.labelDateWatched.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDateWatched.Location = new System.Drawing.Point(8, 111);
+            this.labelDateWatched.Name = "labelDateWatched";
+            this.labelDateWatched.Size = new System.Drawing.Size(103, 20);
+            this.labelDateWatched.TabIndex = 20;
+            this.labelDateWatched.Text = "Date Watched";
             // 
-            // txtGenre
+            // labelGenre
             // 
-            this.txtGenre.Location = new System.Drawing.Point(12, 86);
-            this.txtGenre.Name = "txtGenre";
-            this.txtGenre.Size = new System.Drawing.Size(200, 22);
-            this.txtGenre.TabIndex = 19;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(11, 63);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(48, 20);
-            this.label2.TabIndex = 18;
-            this.label2.Text = "Genre";
+            this.labelGenre.AutoSize = true;
+            this.labelGenre.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGenre.Location = new System.Drawing.Point(11, 63);
+            this.labelGenre.Name = "labelGenre";
+            this.labelGenre.Size = new System.Drawing.Size(48, 20);
+            this.labelGenre.TabIndex = 18;
+            this.labelGenre.Text = "Genre";
             // 
             // txtTitle
             // 
@@ -166,34 +161,52 @@
             this.txtTitle.Size = new System.Drawing.Size(200, 22);
             this.txtTitle.TabIndex = 17;
             // 
-            // label1
+            // labelText
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(11, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 20);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "Title";
+            this.labelText.AutoSize = true;
+            this.labelText.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelText.Location = new System.Drawing.Point(11, 14);
+            this.labelText.Name = "labelText";
+            this.labelText.Size = new System.Drawing.Size(38, 20);
+            this.labelText.TabIndex = 16;
+            this.labelText.Text = "Title";
+            // 
+            // cmbGenre
+            // 
+            this.cmbGenre.FormattingEnabled = true;
+            this.cmbGenre.Items.AddRange(new object[] {
+            "Action",
+            "Animation",
+            "Comedy",
+            "Drama",
+            "Fantasy",
+            "Horror",
+            "Romance",
+            "Sci‑Fi",
+            "Thriller"});
+            this.cmbGenre.Location = new System.Drawing.Point(12, 84);
+            this.cmbGenre.Name = "cmbGenre";
+            this.cmbGenre.Size = new System.Drawing.Size(200, 24);
+            this.cmbGenre.TabIndex = 29;
             // 
             // EditMovieForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(273, 450);
+            this.Controls.Add(this.cmbGenre);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSaveChanges);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.labelReview);
             this.Controls.Add(this.nudRating);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.labelRating);
             this.Controls.Add(this.dtpWatched);
             this.Controls.Add(this.txtComment);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtGenre);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.labelDateWatched);
+            this.Controls.Add(this.labelGenre);
             this.Controls.Add(this.txtTitle);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelText);
             this.Name = "EditMovieForm";
             this.Text = "EditMovieForm";
             this.Load += new System.EventHandler(this.EditMovieForm_Load);
@@ -207,15 +220,15 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnSaveChanges;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label labelReview;
         private System.Windows.Forms.NumericUpDown nudRating;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label labelRating;
         private System.Windows.Forms.DateTimePicker dtpWatched;
         private System.Windows.Forms.TextBox txtComment;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtGenre;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelDateWatched;
+        private System.Windows.Forms.Label labelGenre;
         private System.Windows.Forms.TextBox txtTitle;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelText;
+        private System.Windows.Forms.ComboBox cmbGenre;
     }
 }

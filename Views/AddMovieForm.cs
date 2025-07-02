@@ -15,28 +15,33 @@ namespace CineNote.Views
     public partial class AddMovieForm : Form
     {
         public bool MovieAdded { get; private set; } = false;
+
         public AddMovieForm()
         {
             InitializeComponent();
+
+            BackColor = Color.FromArgb(25, 25, 35);
+            Font = new Font("Segoe UI", 9f, FontStyle.Regular);
+
             StyleFormButton(btnSave);
             StyleFormButton(btnCancel);
 
             StyleInput(txtTitle);
-            StyleInput(txtGenre);
+            StyleComboBox(cmbGenre);
             StyleInput(nudRating);
             StyleInput(numericPriority);
             StyleInput(txtComment);
             StyleInput(dtpWatched);
 
+            PopulateGenreCombo();
 
             dtpWatched.Enabled = false;
-            nudRating.Enabled = false;  
+            nudRating.Enabled = false;
             txtComment.Enabled = false;
-
             numericPriority.Enabled = true;
         }
 
-        void StyleFormButton(Button btn)
+        public void StyleFormButton(Button btn)
         {
             btn.FlatStyle = FlatStyle.Flat;
             btn.BackColor = Color.FromArgb(40, 40, 55);   
@@ -53,6 +58,21 @@ namespace CineNote.Views
             btn.MouseLeave += (_, __) => btn.BackColor = Color.FromArgb(50, 50, 65);
         }
 
+        public void StyleComboBox(ComboBox cb)
+        {
+            cb.BackColor = Color.FromArgb(35, 35, 50);
+            cb.ForeColor = Color.Gainsboro;
+            cb.FlatStyle = FlatStyle.Flat;
+            cb.Font = new Font("Segoe UI", 9f, FontStyle.Regular);
+
+            cb.Paint += (_, e) =>
+            {
+                var r = cb.ClientRectangle; r.Inflate(-1, -1);
+                var p = new Pen(Color.FromArgb(60, 60, 80));
+                e.Graphics.DrawRectangle(p, r);
+            };
+        }
+
         private static void StyleInput(Control ctl)
         {
             var bg = Color.FromArgb(35, 35, 50);
@@ -67,6 +87,22 @@ namespace CineNote.Views
             };
         }
 
+        private static readonly string[] _starterGenres =
+        {
+            "Action", "Comedy", "Drama", "Fantasy",
+            "Horror", "Romance", "Sci‑Fi", "Thriller"
+        };
+
+        private void PopulateGenreCombo()
+        {
+            var current = cmbGenre.Text;
+
+            cmbGenre.Items.Clear();
+            cmbGenre.Items.AddRange(_starterGenres);
+
+            cmbGenre.Text = current;
+        }
+
         private void AddMovieForm_Load(object sender, EventArgs e)
         {
 
@@ -79,28 +115,33 @@ namespace CineNote.Views
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if(string.IsNullOrWhiteSpace(txtTitle.Text) || string.IsNullOrWhiteSpace(txtGenre.Text)) {
+            string genre = cmbGenre.Text.Trim();       
+            if (string.IsNullOrWhiteSpace(txtTitle.Text) || genre == "")
+            {
                 MessageBox.Show("Please fill in all fields!");
                 return;
             }
 
             var movie = new Movie
             {
-                Title = txtTitle.Text,
-                Genre = txtGenre.Text,
+                Title = txtTitle.Text.Trim(),
+                Genre = genre,
                 DateWatched = dtpWatched.Value,
-                Rating = (int) nudRating.Value,
-                Comment = txtComment.Text,
+                Rating = (int)nudRating.Value,
+                Comment = txtComment.Text.Trim(),
                 Watched = checkBoxWatched.Checked,
-                Priority = (int) numericPriority.Value
-
+                Priority = (int)numericPriority.Value
             };
 
             MovieService.SaveMovie(movie);
             MovieAdded = true;
 
-            MessageBox.Show("Movie saved!");
-            this.Close();
+            if (!cmbGenre.Items.Contains(genre))
+                cmbGenre.Items.Add(genre);
+
+            MessageBox.Show($"Movie \"{movie.Title}\" saved!");
+            DialogResult = DialogResult.OK;   
+            Close();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
