@@ -51,12 +51,12 @@
             this.dataGridViewRecs.ReadOnly = true;
             this.dataGridViewRecs.RowHeadersWidth = 51;
             this.dataGridViewRecs.RowTemplate.Height = 24;
-            this.dataGridViewRecs.Size = new System.Drawing.Size(240, 150);
+            this.dataGridViewRecs.Size = new System.Drawing.Size(772, 268);
             this.dataGridViewRecs.TabIndex = 1;
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(16, 190);
+            this.btnClose.Location = new System.Drawing.Point(16, 307);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 2;

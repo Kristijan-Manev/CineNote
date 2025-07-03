@@ -24,40 +24,26 @@ namespace CineNote.Views
 
         private void LoadRecommendations()
         {
-            allMovies = MovieService.LoadMovies();
-
-            var watched = allMovies.Where(m => m.Watched).ToList();
-            var watchlist = allMovies.Where(m => !m.Watched).ToList();
-
-            // Favorite genre based on watch count
-            var favoriteGenre = watched
-                .GroupBy(m => m.Genre)
-                .OrderByDescending(g => g.Count())
-                .FirstOrDefault()?.Key;
-
-            // Top rated genre
-            var topRatedGenre = watched
-                .GroupBy(m => m.Genre)
-                .OrderByDescending(g => g.Average(m => m.Rating))
-                .FirstOrDefault()?.Key;
-
-            // High-priority watchlist
-            var highPriority = watchlist
-                .Where(m => m.Priority >= 3)
-                .OrderByDescending(m => m.Priority)
-                .Take(5)
-                .ToList();
-
-            // Compile recommendation list
-            var recommended = watchlist
-                .Where(m => m.Genre == favoriteGenre || m.Genre == topRatedGenre)
-                .Union(highPriority)
-                .Distinct()
-                .Take(10)
-                .ToList();
+            var recommended = RecommendationService.GetRecommendations();
 
             dataGridViewRecs.DataSource = null;
             dataGridViewRecs.DataSource = recommended;
+
+            if (!dataGridViewRecs.Columns.Contains("AddBtn"))
+            {
+                var btn = new DataGridViewButtonColumn
+                {
+                    Name = "AddBtn",
+                    HeaderText = "",
+                    Text = "Add to Watchlist",
+                    UseColumnTextForButtonValue = true,
+                    FlatStyle = FlatStyle.Flat
+                };
+                dataGridViewRecs.Columns.Add(btn);
+                btn.DefaultCellStyle.BackColor = Color.FromArgb(50, 50, 70);
+                btn.DefaultCellStyle.ForeColor = Color.Gainsboro;
+                btn.DefaultCellStyle.Font = new Font("Segoe UI", 8f, FontStyle.Bold);
+            }
 
             dataGridViewRecs.Columns["Watched"].Visible = false;
             dataGridViewRecs.Columns["Comment"].Visible = false;
@@ -66,9 +52,8 @@ namespace CineNote.Views
 
             dataGridViewRecs.Columns["Title"].HeaderText = "Title";
             dataGridViewRecs.Columns["Genre"].HeaderText = "Genre";
-            dataGridViewRecs.Columns["Priority"].HeaderText = "Priority";
+           // dataGridViewRecs.Columns["Priority"].HeaderText = "Priority";
 
-            // Style it
             StyleDataGridView(dataGridViewRecs);
         }
 
