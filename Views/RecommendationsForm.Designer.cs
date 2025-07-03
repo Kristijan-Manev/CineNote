@@ -37,9 +37,11 @@
             // lableIntro
             // 
             this.lableIntro.AutoSize = true;
-            this.lableIntro.Location = new System.Drawing.Point(13, 9);
+            this.lableIntro.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lableIntro.ForeColor = System.Drawing.Color.Gainsboro;
+            this.lableIntro.Location = new System.Drawing.Point(12, 9);
             this.lableIntro.Name = "lableIntro";
-            this.lableIntro.Size = new System.Drawing.Size(263, 16);
+            this.lableIntro.Size = new System.Drawing.Size(290, 20);
             this.lableIntro.TabIndex = 0;
             this.lableIntro.Text = "We recommend these based on your taste:";
             // 
@@ -51,12 +53,13 @@
             this.dataGridViewRecs.ReadOnly = true;
             this.dataGridViewRecs.RowHeadersWidth = 51;
             this.dataGridViewRecs.RowTemplate.Height = 24;
-            this.dataGridViewRecs.Size = new System.Drawing.Size(772, 268);
+            this.dataGridViewRecs.Size = new System.Drawing.Size(671, 268);
             this.dataGridViewRecs.TabIndex = 1;
+            this.dataGridViewRecs.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRecs_CellContentClick);
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(16, 307);
+            this.btnClose.Location = new System.Drawing.Point(612, 307);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 2;
@@ -67,7 +70,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(704, 395);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.dataGridViewRecs);
             this.Controls.Add(this.lableIntro);
