@@ -22,7 +22,12 @@ namespace CineNote.Views
         {
             InitializeComponent();
             BackColor = Color.FromArgb(25, 25, 35); Font = new Font("Segoe UI", 9f);
+
+            StyleButton(btnClose);
             btnClose.Click += (_, __) => Close();
+
+            StyleButton(btnRefresh);
+            btnRefresh.Click += (_, __) => LoadRecommendations();
 
             LoadRecommendations();
         }
@@ -79,8 +84,11 @@ namespace CineNote.Views
             if (!dataGridViewRecs.Columns.Contains("AddBtn"))
                 AddWatchListButton();
 
-            StyleDataGridView(dataGridViewRecs);
+            var btnCol = dataGridViewRecs.Columns["AddBtn"];
+            if (btnCol != null)
+                btnCol.DisplayIndex = dataGridViewRecs.Columns.Count - 1;
 
+            StyleDataGridView(dataGridViewRecs);
             dataGridViewRecs.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
@@ -97,11 +105,11 @@ namespace CineNote.Views
 
             dataGridViewRecs.Columns.Add(btnCol);
 
-            var cellStyle = btnCol.DefaultCellStyle;
-            cellStyle.BackColor = Color.FromArgb(50, 50, 70);
-            cellStyle.ForeColor = Color.Gainsboro;
-            cellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            cellStyle.Font = new Font("Segoe UI", 8.5f, FontStyle.Bold);
+            var cs = btnCol.DefaultCellStyle;
+            cs.BackColor = Color.FromArgb(50, 50, 70);
+            cs.ForeColor = Color.Gainsboro;
+            cs.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            cs.Font = new Font("Segoe UI", 8.5f, FontStyle.Bold);
         }
 
 
@@ -135,6 +143,34 @@ namespace CineNote.Views
             grid.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(70, 70, 100);
             grid.RowsDefaultCellStyle.SelectionForeColor = Color.White;
             grid.DefaultCellStyle.SelectionBackColor = Color.FromArgb(70, 70, 100);
+        }
+
+        void StyleButton(Button btn)
+        {
+            btn.FlatStyle = FlatStyle.Flat;
+            btn.BackColor = Color.FromArgb(40, 40, 55);
+            btn.ForeColor = Color.Gainsboro;
+            btn.Font = new Font("Segoe UI", 8f, FontStyle.Bold);
+
+            btn.AutoSize = false;
+            btn.Size = new Size(88, 26);
+            btn.Padding = Padding.Empty;
+            btn.TextAlign = ContentAlignment.MiddleCenter;
+            btn.AutoEllipsis = true;
+
+            btn.FlatAppearance.BorderSize = 1;
+            btn.FlatAppearance.BorderColor = Color.FromArgb(60, 60, 80);
+
+            btn.MouseEnter += (_, __) =>
+            {
+                btn.BackColor = Color.FromArgb(60, 60, 75);
+                btn.FlatAppearance.BorderColor = Color.FromArgb(100, 100, 130);
+            };
+            btn.MouseLeave += (_, __) =>
+            {
+                btn.BackColor = Color.FromArgb(40, 40, 55);
+                btn.FlatAppearance.BorderColor = Color.FromArgb(60, 60, 80);
+            };
         }
 
         private void dataGridViewRecs_CellContentClick(object sender, DataGridViewCellEventArgs e)

@@ -195,7 +195,7 @@
             // btnApplyFilter
             // 
             this.btnApplyFilter.ForeColor = System.Drawing.Color.Black;
-            this.btnApplyFilter.Location = new System.Drawing.Point(524, 8);
+            this.btnApplyFilter.Location = new System.Drawing.Point(535, 2);
             this.btnApplyFilter.Name = "btnApplyFilter";
             this.btnApplyFilter.Size = new System.Drawing.Size(109, 26);
             this.btnApplyFilter.TabIndex = 6;
@@ -264,7 +264,7 @@
             this.btnDeleteSelected.Name = "btnDeleteSelected";
             this.btnDeleteSelected.Size = new System.Drawing.Size(108, 23);
             this.btnDeleteSelected.TabIndex = 2;
-            this.btnDeleteSelected.Text = "Delete Selected";
+            this.btnDeleteSelected.Text = "Delete";
             this.btnDeleteSelected.UseVisualStyleBackColor = true;
             this.btnDeleteSelected.Click += new System.EventHandler(this.button2_Click);
             // 

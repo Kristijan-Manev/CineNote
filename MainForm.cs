@@ -62,7 +62,13 @@ namespace CineNote
 
         private void StyleMainActionButtons()
         {
-            var buttons = new List<Button> { btnAddMovie, btnEditMovie, btnDeleteSelected, btnApplyFilter };
+            var buttons = new List<Button>
+    {
+        btnAddMovie,
+        btnEditMovie,
+        btnApplyFilter,
+        btnDeleteSelected
+    };
 
             foreach (var btn in buttons)
             {
@@ -70,26 +76,27 @@ namespace CineNote
                 btn.BackColor = Color.FromArgb(40, 40, 55);
                 btn.ForeColor = Color.Gainsboro;
 
-                btn.Font = new Font("Segoe UI", 8.5f, FontStyle.Bold);
-                btn.Height = 25;             
-                btn.Width = 90;         
-                btn.Padding = new Padding(6, 2, 6, 2);   
+                btn.Font = new Font("Segoe UI", 8f, FontStyle.Bold);
+
+                btn.AutoSize = false;
+                btn.Size = new Size(88, 26);
+
+                btn.TextAlign = ContentAlignment.MiddleCenter;
+                btn.AutoEllipsis = true;
+                btn.Padding = Padding.Empty;
 
                 btn.FlatAppearance.BorderSize = 1;
                 btn.FlatAppearance.BorderColor = Color.FromArgb(60, 60, 80);
 
-                btn.MouseEnter += (s, e) => { btn.BackColor = Color.FromArgb(60, 60, 75); };
-                btn.MouseLeave += (s, e) => { btn.BackColor = Color.FromArgb(50, 50, 65); };
-                btn.MouseEnter += (s, e) =>
+                btn.MouseEnter += (_, __) =>
                 {
                     btn.BackColor = Color.FromArgb(60, 60, 75);
                     btn.FlatAppearance.BorderColor = Color.FromArgb(100, 100, 130);
                 };
-
-                btn.MouseLeave += (s, e) =>
+                btn.MouseLeave += (_, __) =>
                 {
-                    btn.BackColor = Color.FromArgb(50, 50, 65);
-                    btn.FlatAppearance.BorderColor = Color.FromArgb(70, 70, 90);
+                    btn.BackColor = Color.FromArgb(40, 40, 55);
+                    btn.FlatAppearance.BorderColor = Color.FromArgb(60, 60, 80);
                 };
             }
         }

@@ -23,6 +23,11 @@ namespace CineNote.Views
             BackColor = Color.FromArgb(25, 25, 35);
             Font = new Font("Segoe UI", 9f, FontStyle.Regular);
 
+            dtpWatched.SkinColor = Color.FromArgb(35, 35, 50);
+            dtpWatched.TextColor = Color.Gainsboro;
+            dtpWatched.BorderColor = Color.FromArgb(60, 60, 80);
+            dtpWatched.BorderSize = 1;
+
             StyleButton(btnSaveChanges);
             StyleButton(btnCancel);
 
@@ -36,7 +41,6 @@ namespace CineNote.Views
             StyleInput(cmbGenre);        
             StyleInput(nudRating);
             StyleInput(txtComment);
-            StyleInput(dtpWatched);
 
             cmbGenre.DropDownStyle = ComboBoxStyle.DropDown;  
             cmbGenre.Items.AddRange(GenreService.LoadAllGenres().ToArray());
@@ -53,15 +57,29 @@ namespace CineNote.Views
         void StyleButton(Button btn)
         {
             btn.FlatStyle = FlatStyle.Flat;
-            btn.BackColor = Color.FromArgb(50, 50, 65);
+            btn.BackColor = Color.FromArgb(40, 40, 55);
             btn.ForeColor = Color.Gainsboro;
-            btn.Font = new Font("Segoe UI", 9f, FontStyle.Bold);
-            btn.Padding = new Padding(10, 4, 10, 4);
-            btn.FlatAppearance.BorderColor = Color.FromArgb(70, 70, 90);
-            btn.FlatAppearance.BorderSize = 1;
+            btn.Font = new Font("Segoe UI", 8f, FontStyle.Bold);
 
-            btn.MouseEnter += (_, __) => btn.BackColor = Color.FromArgb(60, 60, 75);
-            btn.MouseLeave += (_, __) => btn.BackColor = Color.FromArgb(50, 50, 65);
+            btn.AutoSize = false;
+            btn.Size = new Size(88, 26);
+            btn.Padding = Padding.Empty;
+            btn.TextAlign = ContentAlignment.MiddleCenter;
+            btn.AutoEllipsis = true;
+
+            btn.FlatAppearance.BorderSize = 1;
+            btn.FlatAppearance.BorderColor = Color.FromArgb(60, 60, 80);
+
+            btn.MouseEnter += (_, __) =>
+            {
+                btn.BackColor = Color.FromArgb(60, 60, 75);
+                btn.FlatAppearance.BorderColor = Color.FromArgb(100, 100, 130);
+            };
+            btn.MouseLeave += (_, __) =>
+            {
+                btn.BackColor = Color.FromArgb(40, 40, 55);
+                btn.FlatAppearance.BorderColor = Color.FromArgb(60, 60, 80);
+            };
         }
 
         void StyleLabel(Label lbl)

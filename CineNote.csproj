@@ -91,6 +91,9 @@
     <Compile Include="Services\MovieCatalog.cs" />
     <Compile Include="Services\MovieService.cs" />
     <Compile Include="Services\RecommendationService.cs" />
+    <Compile Include="Services\RJDatePicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Views\AddMovieForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +135,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Views\AddMovieForm.resx">
       <DependentUpon>AddMovieForm.cs</DependentUpon>
@@ -164,6 +168,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Helpers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calendarDark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calendarWhite.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

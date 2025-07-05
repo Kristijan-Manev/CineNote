@@ -31,6 +31,7 @@
             this.lableIntro = new System.Windows.Forms.Label();
             this.dataGridViewRecs = new System.Windows.Forms.DataGridView();
             this.btnClose = new System.Windows.Forms.Button();
+            this.btnRefresh = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRecs)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,18 +60,28 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(612, 307);
+            this.btnClose.Location = new System.Drawing.Point(586, 306);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 2;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Location = new System.Drawing.Point(16, 306);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(75, 23);
+            this.btnRefresh.TabIndex = 3;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            // 
             // RecommendationsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(704, 395);
+            this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.dataGridViewRecs);
             this.Controls.Add(this.lableIntro);
@@ -87,5 +98,6 @@
         private System.Windows.Forms.Label lableIntro;
         private System.Windows.Forms.DataGridView dataGridViewRecs;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }

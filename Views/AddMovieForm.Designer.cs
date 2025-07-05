@@ -33,7 +33,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtComment = new System.Windows.Forms.TextBox();
-            this.dtpWatched = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.nudRating = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
@@ -44,6 +43,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.numericPriority = new System.Windows.Forms.NumericUpDown();
             this.cmbGenre = new System.Windows.Forms.ComboBox();
+            this.dtpWatched = new CustomControls.RJControls.RJDatePicker();
             ((System.ComponentModel.ISupportInitialize)(this.nudRating)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericPriority)).BeginInit();
             this.SuspendLayout();
@@ -97,29 +97,19 @@
             this.txtComment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(25)))), ((int)(((byte)(40)))));
             this.txtComment.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtComment.ForeColor = System.Drawing.Color.Gainsboro;
-            this.txtComment.Location = new System.Drawing.Point(12, 255);
+            this.txtComment.Location = new System.Drawing.Point(12, 261);
             this.txtComment.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtComment.Multiline = true;
             this.txtComment.Name = "txtComment";
             this.txtComment.Size = new System.Drawing.Size(200, 64);
             this.txtComment.TabIndex = 5;
             // 
-            // dtpWatched
-            // 
-            this.dtpWatched.CalendarForeColor = System.Drawing.Color.Gainsboro;
-            this.dtpWatched.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(60)))));
-            this.dtpWatched.Location = new System.Drawing.Point(13, 145);
-            this.dtpWatched.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.dtpWatched.Name = "dtpWatched";
-            this.dtpWatched.Size = new System.Drawing.Size(200, 27);
-            this.dtpWatched.TabIndex = 6;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(8, 176);
+            this.label4.Location = new System.Drawing.Point(8, 182);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(95, 20);
             this.label4.TabIndex = 7;
@@ -129,7 +119,7 @@
             // 
             this.nudRating.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.nudRating.ForeColor = System.Drawing.Color.Gainsboro;
-            this.nudRating.Location = new System.Drawing.Point(12, 200);
+            this.nudRating.Location = new System.Drawing.Point(12, 206);
             this.nudRating.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.nudRating.Maximum = new decimal(new int[] {
             5,
@@ -155,7 +145,7 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(8, 231);
+            this.label5.Location = new System.Drawing.Point(8, 237);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(59, 20);
             this.label5.TabIndex = 9;
@@ -164,7 +154,7 @@
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(12, 393);
+            this.btnSave.Location = new System.Drawing.Point(11, 388);
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(100, 34);
@@ -176,7 +166,7 @@
             // btnCancel
             // 
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(117, 392);
+            this.btnCancel.Location = new System.Drawing.Point(117, 388);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(96, 35);
@@ -201,7 +191,7 @@
             // checkBoxWatched
             // 
             this.checkBoxWatched.AutoSize = true;
-            this.checkBoxWatched.Location = new System.Drawing.Point(123, 347);
+            this.checkBoxWatched.Location = new System.Drawing.Point(123, 354);
             this.checkBoxWatched.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkBoxWatched.Name = "checkBoxWatched";
             this.checkBoxWatched.Size = new System.Drawing.Size(89, 24);
@@ -215,7 +205,7 @@
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(8, 323);
+            this.label7.Location = new System.Drawing.Point(8, 329);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(61, 20);
             this.label7.TabIndex = 14;
@@ -225,7 +215,7 @@
             // 
             this.numericPriority.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.numericPriority.ForeColor = System.Drawing.Color.Gainsboro;
-            this.numericPriority.Location = new System.Drawing.Point(12, 347);
+            this.numericPriority.Location = new System.Drawing.Point(12, 353);
             this.numericPriority.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.numericPriority.Maximum = new decimal(new int[] {
             5,
@@ -267,12 +257,26 @@
             this.cmbGenre.Size = new System.Drawing.Size(199, 28);
             this.cmbGenre.TabIndex = 16;
             // 
+            // dtpWatched
+            // 
+            this.dtpWatched.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.dtpWatched.BorderSize = 0;
+            this.dtpWatched.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            this.dtpWatched.Location = new System.Drawing.Point(12, 144);
+            this.dtpWatched.MinimumSize = new System.Drawing.Size(4, 35);
+            this.dtpWatched.Name = "dtpWatched";
+            this.dtpWatched.Size = new System.Drawing.Size(200, 35);
+            this.dtpWatched.SkinColor = System.Drawing.Color.MediumSlateBlue;
+            this.dtpWatched.TabIndex = 17;
+            this.dtpWatched.TextColor = System.Drawing.Color.White;
+            // 
             // AddMovieForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(35)))));
             this.ClientSize = new System.Drawing.Size(294, 501);
+            this.Controls.Add(this.dtpWatched);
             this.Controls.Add(this.cmbGenre);
             this.Controls.Add(this.numericPriority);
             this.Controls.Add(this.label7);
@@ -283,7 +287,6 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.nudRating);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.dtpWatched);
             this.Controls.Add(this.txtComment);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -310,7 +313,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtComment;
-        private System.Windows.Forms.DateTimePicker dtpWatched;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.NumericUpDown nudRating;
         private System.Windows.Forms.Label label5;
@@ -321,5 +323,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.NumericUpDown numericPriority;
         private System.Windows.Forms.ComboBox cmbGenre;
+        private CustomControls.RJControls.RJDatePicker dtpWatched;
     }
 }

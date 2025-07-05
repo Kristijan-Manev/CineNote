@@ -23,15 +23,19 @@ namespace CineNote.Views
             BackColor = Color.FromArgb(25, 25, 35);
             Font = new Font("Segoe UI", 9f, FontStyle.Regular);
 
-            StyleFormButton(btnSave);
-            StyleFormButton(btnCancel);
+            dtpWatched.SkinColor = Color.FromArgb(35, 35, 50);
+            dtpWatched.TextColor = Color.Gainsboro;
+            dtpWatched.BorderColor = Color.FromArgb(60, 60, 80);
+            dtpWatched.BorderSize = 1;
+
+            StyleButton(btnSave);
+            StyleButton(btnCancel);
 
             StyleInput(txtTitle);
             StyleComboBox(cmbGenre);
             StyleInput(nudRating);
             StyleInput(numericPriority);
             StyleInput(txtComment);
-            StyleInput(dtpWatched);
 
             PopulateGenreCombo();
 
@@ -41,21 +45,32 @@ namespace CineNote.Views
             numericPriority.Enabled = true;
         }
 
-        public void StyleFormButton(Button btn)
+        void StyleButton(Button btn)
         {
             btn.FlatStyle = FlatStyle.Flat;
-            btn.BackColor = Color.FromArgb(40, 40, 55);   
+            btn.BackColor = Color.FromArgb(40, 40, 55);
             btn.ForeColor = Color.Gainsboro;
-            btn.Font = new Font("Segoe UI", 7, FontStyle.Bold);
+            btn.Font = new Font("Segoe UI", 8f, FontStyle.Bold);
 
-            btn.Padding = new Padding(10, 4, 10, 4);    
-            btn.Height = 22;                       
-            btn.Width = 100;                       
+            btn.AutoSize = false;
+            btn.Size = new Size(88, 26);
+            btn.Padding = Padding.Empty;
+            btn.TextAlign = ContentAlignment.MiddleCenter;
+            btn.AutoEllipsis = true;
+
             btn.FlatAppearance.BorderSize = 1;
             btn.FlatAppearance.BorderColor = Color.FromArgb(60, 60, 80);
 
-            btn.MouseEnter += (_, __) => btn.BackColor = Color.FromArgb(60, 60, 75);
-            btn.MouseLeave += (_, __) => btn.BackColor = Color.FromArgb(50, 50, 65);
+            btn.MouseEnter += (_, __) =>
+            {
+                btn.BackColor = Color.FromArgb(60, 60, 75);
+                btn.FlatAppearance.BorderColor = Color.FromArgb(100, 100, 130);
+            };
+            btn.MouseLeave += (_, __) =>
+            {
+                btn.BackColor = Color.FromArgb(40, 40, 55);
+                btn.FlatAppearance.BorderColor = Color.FromArgb(60, 60, 80);
+            };
         }
 
         public void StyleComboBox(ComboBox cb)
