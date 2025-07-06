@@ -25,7 +25,9 @@ Windows Forms проект
 
 ### 2.2 Add / Edit Movie
 Формите Add Movie и Edit Movie служат за креирање и уредување на информации за поединечни филмови во базата на корисникот. Имаат слична структура, со тоа што при уредување (Edit) полињата се однапред пополнети со постоечките податоци за избраниот филм.
+
 ![Screenshot 2025-07-06 170027](https://github.com/user-attachments/assets/eaa6f77d-e74d-4fce-8ddb-14186bc5741e)
+
 ![Screenshot 2025-07-06 191058](https://github.com/user-attachments/assets/e919423d-5288-4452-baad-f1bf32663030)
 
 * Полето **Watched** ги активира дата‑пикерот, рејтингот и полето за коментар.
